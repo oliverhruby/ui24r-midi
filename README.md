@@ -1,10 +1,12 @@
 # MIDI Controller for Soundcraft Ui24R
-The aim of this project is to create a MIDI controller for [Soundcraft Ui24R](https://www.soundcraft.com/en/products/ui24r) mixing console. It doesn't currently support MIDI control. The controller would connect with a MIDI device (control surface) and translate the messages from the MIDI device into native commands that can control the console.
+The aim of this project is to create a MIDI controller for [Soundcraft Ui24R](https://www.soundcraft.com/en/products/ui24r) mixing console. It doesn't currently support MIDI control. The controller would connect the MIDI device device (control surface) to the Ui24R console and translate the MIDI commands to the native commands or the opposite way, depending on the settings. The user can configure the binding of the commands.
+
+![MIDI Controller Architecture](docs/MIDIController_architecture.png)
 
 ## Current Status
 The project is currently in the *ALPHA* phase, the application skeleton is being prepared.
 
-## Goals
+## Current Goals
 * Connect to console using IP or address
 * Find existing MIDI devices, select one and connect
 * Persist the setting after closing the application
@@ -15,3 +17,7 @@ The project is currently in the *ALPHA* phase, the application skeleton is being
 
 ## Architecture of the application
 The application is built in [Angular](https://angular.io/), reactive programming and state management with the redux pattern is achieved by [Reactive Extensions for Angular](https://github.com/ngrx). To support multiple platforms like Linux, Windows and OSX the application is packaged using [Electron](https://electronjs.org/). For now it will be a standalone application, later we can think about running it directly in browser (which needs to support [Web MIDI Api](https://webaudio.github.io/web-midi-api/)).
+
+## Future goals
+* once the config format will be stabile the community can help creating setting for various common devices
+* talk to the producer and maybe suggest integrating the app into the console, this could work with the USB to MIDI adapter connected directly to the console
