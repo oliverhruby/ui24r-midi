@@ -26,4 +26,4 @@ The application is built in [Angular](https://angular.io/), reactive programming
 ## Donate
 If you want to support send me a beer, it keeps my mind relaxed and ideas will come :-)
 
-[![Support via PayPal](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://www.paypal.me/oliverhruby/)
+[![Support via PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/oliverhruby/)
