@@ -14,6 +14,7 @@ The project is currently in the *ALPHA* phase, the application skeleton is being
 * Allow listening to the console parameters and map them to outgoing MIDI commands
 * Make the UI as much intuitive as possible, drag & drop or visual
 * Allow configuration sets - settings for each device
+* Allow some "MIDI learn" functionality that will help with configuration
 
 ## Architecture of the application
 The application is built in [Angular](https://angular.io/), reactive programming and state management with the redux pattern is achieved by [Reactive Extensions for Angular](https://github.com/ngrx). To support multiple platforms like Linux, Windows and OSX the application is packaged using [Electron](https://electronjs.org/). For now it will be a standalone application, later we can think about running it directly in browser (which needs to support [Web MIDI Api](https://webaudio.github.io/web-midi-api/)).
@@ -21,3 +22,8 @@ The application is built in [Angular](https://angular.io/), reactive programming
 ## Future goals
 * once the config format will be stabile the community can help creating setting for various common devices
 * talk to the producer and maybe suggest integrating the app into the console, this could work with the USB to MIDI adapter connected directly to the console
+
+## Donate
+If you want to support send me a beer, it keeps my mind relaxed and ideas will come :-)
+
+[![Support via PayPal](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://www.paypal.me/oliverhruby/)
