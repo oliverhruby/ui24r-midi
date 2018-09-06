@@ -1,11 +1,11 @@
 {
-  "name": "angular-electron",
-  "version": "4.2.2",
-  "description": "Angular 6 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "name": "ui24r-midi",
+  "version": "0.1.0",
+  "description": "MIDI Controller for Soundcraft Ui24R",
+  "homepage": "https://github.com/oliverhruby/ui24r-midi",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Oliver Hruby",
+    "email": "oliver.hruby@gmail.com"
   },
   "keywords": [
     "angular",
@@ -40,8 +40,8 @@
     "@ngrx/store": "^6.1.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.7.5",
-    "@angular/cli": "^6.1.5",
+    "@angular-devkit/build-angular": "^0.8.0",
+    "@angular/cli": "^6.2.0",
     "@angular/common": "^6.1.7",
     "@angular/compiler": "^6.1.7",
     "@angular/compiler-cli": "^6.1.7",

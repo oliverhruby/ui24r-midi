@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { SettingsComponent } from '../settings/settings.component';
+import { ControllerService } from '../../providers/controller.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -9,12 +11,18 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
+      declarations: [
+        HomeComponent,
+        SettingsComponent
+      ],
+      providers: [
+        ControllerService
+      ],
       imports: [
         TranslateModule.forRoot()
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
