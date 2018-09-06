@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs/internal/observable/from';
-import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ControllerService {
 
-  constructor() {
-    
-  }
+  constructor() { }
 
   /**
    * Provides an observable list of the connected MIDI input devices
@@ -18,7 +15,7 @@ export class ControllerService {
     .pipe(
       // convert from iterable
       map((midi: any) => Array.from(midi.inputs))
-    )
+    );
    }
 
   /**
@@ -29,6 +26,6 @@ export class ControllerService {
     .pipe(
       // convert from iterable
       map((midi: any) => Array.from(midi.outputs))
-    )
+    );
    }
   }

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ControllerService } from '../../providers/controller.service';
 import { resolve } from 'dns';
 
-export class Device
-{
+export class Device {
   name: string;
 }
 
@@ -18,18 +17,17 @@ export class SettingsComponent implements OnInit {
   outputDevices: any[];
 
   constructor(private controllerService: ControllerService) {
-    
+
   }
 
   ngOnInit() {
-    let me = this;
     this.controllerService.getInputDevices().subscribe((data) => {
       console.log(data);
-      me.inputDevices = data;
+      this.inputDevices = data;
     });
     this.controllerService.getOutputDevices().subscribe((data) => {
       console.log(data);
-      me.outputDevices = data;
+      this.outputDevices = data;
     });
   }
 
