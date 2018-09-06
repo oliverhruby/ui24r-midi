@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SettingsComponent } from './settings.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ControllerService } from '../../providers/controller.service';
+import { MidiService } from '../../providers/midi.service';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;
@@ -11,7 +11,7 @@ describe('SettingsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SettingsComponent ],
-      providers: [ ControllerService ],
+      providers: [ MidiService ],
       imports: [
         TranslateModule.forRoot()
       ]

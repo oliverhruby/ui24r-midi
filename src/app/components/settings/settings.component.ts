@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ControllerService } from '../../providers/controller.service';
+import { MidiService } from '../../providers/midi.service';
 import { resolve } from 'dns';
 
 export class Device {
@@ -16,16 +16,16 @@ export class SettingsComponent implements OnInit {
   inputDevices: any[];
   outputDevices: any[];
 
-  constructor(private controllerService: ControllerService) {
+  constructor(private midiService: MidiService) {
 
   }
 
   ngOnInit() {
-    this.controllerService.getInputDevices().subscribe((data) => {
+    this.midiService.getInputDevices().subscribe((data) => {
       console.log(data);
       this.inputDevices = data;
     });
-    this.controllerService.getOutputDevices().subscribe((data) => {
+    this.midiService.getOutputDevices().subscribe((data) => {
       console.log(data);
       this.outputDevices = data;
     });

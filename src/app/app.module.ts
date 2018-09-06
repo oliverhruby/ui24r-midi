@@ -14,7 +14,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ElectronService } from './providers/electron.service';
-import { ControllerService } from './providers/controller.service';
+import { MidiService } from './providers/midi.service';
 
 import { WebviewDirective } from './directives/webview.directive';
 
@@ -49,7 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     ElectronService,
-    ControllerService
+    MidiService
   ],
   bootstrap: [AppComponent]
 })

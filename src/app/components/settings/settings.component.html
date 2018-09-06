@@ -3,19 +3,19 @@
     Settings
   </div>
   <div>
-      MIDI Input: <select>
-              <option *ngFor="let device of inputDevices" value={{device}}>
-                  {{device}}
-              </option>
-          </select>
-      </div>
-      <div>
-          MIDI Output: <select>
-                  <option *ngFor="let device of outputDevices" value={{device}}>
-                      {{device}}
-                  </option>
-              </select>
-          </div>
+    MIDI Input: <select>
+      <option *ngFor="let device of inputDevices">
+        {{device.name}}
+      </option>
+    </select>
+  </div>
+  <div>
+    MIDI Output: <select>
+      <option *ngFor="let device of outputDevices">
+        {{device.name}}
+      </option>
+    </select>
+  </div>
   <div>
     IP: <input type="text" id="ip">
   </div>

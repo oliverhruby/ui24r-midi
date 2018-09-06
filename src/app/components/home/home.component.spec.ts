@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SettingsComponent } from '../settings/settings.component';
-import { ControllerService } from '../../providers/controller.service';
+import { MidiService } from '../../providers/midi.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -16,7 +16,7 @@ describe('HomeComponent', () => {
         SettingsComponent
       ],
       providers: [
-        ControllerService
+        MidiService
       ],
       imports: [
         TranslateModule.forRoot()
