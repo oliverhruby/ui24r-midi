@@ -4,6 +4,9 @@ import { map } from 'rxjs/operators';
 
 declare const navigator: any;
 
+/**
+ * Provides access to the MIDI device using observables
+ */
 @Injectable()
 export class MidiService {
 

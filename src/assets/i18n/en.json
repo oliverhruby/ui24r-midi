@@ -1,7 +1,9 @@
 {
-  "PAGES": {
-      "HOME": {
-          "TITLE": "App works !"
-      }
-  }
+    "Input": "Input",
+    "Log": "Log",
+    "MIDI Input": "MIDI Input",
+    "Name": "Name",
+    "Parameters": "Parameters",
+    "Profile": "Profile",
+    "Rules" : "Rules"
 }

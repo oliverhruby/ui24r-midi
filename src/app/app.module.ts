@@ -15,12 +15,15 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ElectronService } from './providers/electron.service';
 import { MidiService } from './providers/midi.service';
+import { ControllerService } from './providers/controller.service';
 
 import { WebviewDirective } from './directives/webview.directive';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { WatcherComponent } from './components/watcher/watcher.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -31,7 +34,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
+    WatcherComponent,
     SettingsComponent,
+    ProfileComponent,
     WebviewDirective
   ],
   imports: [
@@ -49,7 +54,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     ElectronService,
-    MidiService
+    MidiService,
+    ControllerService
   ],
   bootstrap: [AppComponent]
 })

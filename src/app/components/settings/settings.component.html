@@ -1,22 +1,25 @@
-<div class="widget">
-  <div class="title">
-    Settings
-  </div>
-  <div>
-    MIDI Input: <select>
+<div>
+  <div class="widget">
+    <div class="title">{{"Input" | translate}}</div>
+    {{"MIDI Input" | translate}}: <select>
       <option *ngFor="let device of inputDevices">
         {{device.name}}
       </option>
     </select>
   </div>
-  <div>
-    MIDI Output: <select>
-      <option *ngFor="let device of outputDevices">
-        {{device.name}}
-      </option>
+  <div class="widget">
+    <div class="title">Transform</div>
+    {{"Profile" | translate}}:
+    <select>
+      <option>Korg nanoControl</option>
+      <option>Example Controller</option>
+      <option>Some Other Brick</option>
     </select>
   </div>
-  <div>
-    IP: <input type="text" id="ip">
+</div>
+<div>
+  <div class="widget">
+    <div class="title">{{"Output" | translate}}</div>
+    {{"URL" | translate}}: <input type="text" id="ip">
   </div>
 </div>

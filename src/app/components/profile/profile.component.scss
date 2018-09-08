@@ -1,0 +1,31 @@
+.rules {
+  border: 1px solid chocolate;
+  padding: 5px;
+  height: 300px;
+  overflow: auto;
+}
+
+.rule {
+  border: 1px solid #222222;
+  background: #222222;
+  margin: 2px;
+  border-radius: 5px;
+  padding: 1px;
+  color: white;
+}
+
+.rule:hover {
+  background: #333333;
+}
+
+.param {
+  display: inline-block;
+  background: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.param:hover {
+  border: 1px solid #AAAAAA;
+}

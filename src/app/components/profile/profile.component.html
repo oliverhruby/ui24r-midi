@@ -1,0 +1,10 @@
+<div class="widget">
+  <div class="title">{{"Profile" | translate}}</div>
+  <div>{{"Name" | translate}}: {{profile.Name}}</div>
+  <div>{{"Parameters" | translate}}:</div>
+  <div class="rules">
+    <div *ngFor="let rule of profile.Parameters" class="rule">
+      {{rule}}
+    </div>
+  </div>
+</div>

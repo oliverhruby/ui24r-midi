@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MidiService } from '../../providers/midi.service';
-import { resolve } from 'dns';
-
-export class Device {
-  name: string;
-}
 
 @Component({
   selector: 'app-settings',
