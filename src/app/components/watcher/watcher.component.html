@@ -1,4 +1,6 @@
 <div class="widget">
   <div class="title">{{"Log" | translate}}</div>
-  <pre>{{log}}</pre>
+  <div class="message" *ngFor="let message of messages" >
+		{{message.status}}, {{message.data[0]}}, {{message.data[1]}}
+	</div>
 </div>

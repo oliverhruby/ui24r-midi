@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { MidiService } from '../../providers/midi.service';
+import { ControllerService } from '../../providers/controller.service';
 
 @Component({
   selector: 'app-watcher',
@@ -7,12 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WatcherComponent implements OnInit {
 
-  log: string;
+  messages: any[] = [];
 
-  constructor() { }
-
-  ngOnInit() {
-    this.log = "1,241,3...no match\n1,244,4...Set Channel 1 Volume 4\n1,241,1...no match\n1,244,2...Set Channel 1 Volume 2";
+  constructor(
+    private cd: ChangeDetectorRef,
+    private midiService: MidiService,
+    private controllerService: ControllerService) {
   }
 
+  ngOnInit() {
+    this.midiService.getMidiStream().subscribe(message => {
+      this.messages.unshift(message);
+      this.cd.detectChanges();
+      if (this.messages.length > 10) {
+        this.messages = this.messages.slice(0, 10);
+      }
+    });
+  }
 }

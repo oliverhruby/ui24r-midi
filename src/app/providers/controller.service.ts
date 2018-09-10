@@ -1,37 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { MidiService } from './midi.service';
+import { HttpClient } from '@angular/common/http';
+
 /**
  * Translates the incoming MIDI data to console commands using a device profile
  */
 @Injectable()
 export class ControllerService {
   profile = {
-    "rules": [
-      ["1", "SETD^1111"],
-      ["2", "SETD^2222"],
-      ["3", "SETD^3333"],
-      ["4", "SETD^4444"]
+    rules: [
+      ['144', 'SETD^1111'],
+      ['176', 'SETD^2222']
     ]
   };
 
-  constructor() { }
-  /*constructor(store: Store<any>) {
-    // subscribe to MIDI events
-    store.select("midi").subscribe(data => function (data) {
-      this.translate(data);
-    });
-  }*/
-
-  /**
-   * 
-   * @param input Translate the midi data to the console command
-   */
-  translate(input: any) {
-    this.profile.rules.forEach(element => {
-      if (input == element[0]) { return element[1]; }
-    });
+  constructor(
+    private midiService: MidiService,
+    private httpClient: HttpClient
+  ) {
+    this.midiService.getMidiStream()
+      .subscribe(message => this.translate(message));
   }
 
-
-
+  /**
+   * Translate the midi data to the console command
+   * @param input Incoming MIDI message
+   */
+  translate(input) {
+    this.profile.rules.forEach(element => {
+      if (input.status === element[0]) {
+        console.log(input.status + ',' + input.data[0] + ',' + input.data[1] + ' ==> ' + element[1]);
+        this.httpClient.get('http://127.0.0.1/test').subscribe();
+      }
+    });
+  }
 }

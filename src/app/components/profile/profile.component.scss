@@ -1,11 +1,11 @@
-.rules {
+.commands {
   border: 1px solid chocolate;
   padding: 5px;
   height: 300px;
   overflow: auto;
 }
 
-.rule {
+.command {
   border: 1px solid #222222;
   background: #222222;
   margin: 2px;
@@ -14,11 +14,11 @@
   color: white;
 }
 
-.rule:hover {
+.command:hover {
   background: #333333;
 }
 
-.param {
+.parameter {
   display: inline-block;
   background: black;
   border: 1px solid black;
@@ -26,6 +26,6 @@
   padding: 2px;
 }
 
-.param:hover {
+.parameter:hover {
   border: 1px solid #AAAAAA;
 }
