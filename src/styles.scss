@@ -15,7 +15,7 @@ select {
 }
 
 .title {
-  background-color: #000011;
+  background-color: #111111;
   padding: 3px;
   color: white;
   text-transform: uppercase;
@@ -26,4 +26,11 @@ select {
   margin: 10px;
   padding: 10px;
   background-color: black;
+}
+
+a {
+  color: #baaa9a;
+}
+a:hover {
+  color: white;
 }

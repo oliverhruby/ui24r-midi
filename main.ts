@@ -13,7 +13,8 @@ function createWindow() {
     x: 0,
     y: 0,
     width: 400,
-    height: 300
+    height: 300,
+    icon: path.join(__dirname, 'src/favicon.png')
   });
 
   if (serve) {

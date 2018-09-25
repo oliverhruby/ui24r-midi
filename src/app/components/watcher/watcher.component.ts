@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MidiService } from '../../providers/midi.service';
-import { ControllerService } from '../../providers/controller.service';
+import { MidiService } from '../../services/midi.service';
 
 @Component({
   selector: 'app-watcher',
@@ -13,16 +12,15 @@ export class WatcherComponent implements OnInit {
 
   constructor(
     private cd: ChangeDetectorRef,
-    private midiService: MidiService,
-    private controllerService: ControllerService) {
+    private midiService: MidiService) {
   }
 
   ngOnInit() {
     this.midiService.getMidiStream().subscribe(message => {
       this.messages.unshift(message);
       this.cd.detectChanges();
-      if (this.messages.length > 10) {
-        this.messages = this.messages.slice(0, 10);
+      if (this.messages.length > 100) {
+        this.messages = this.messages.slice(0, 100);
       }
     });
   }

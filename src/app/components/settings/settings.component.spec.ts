@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SettingsComponent } from './settings.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { MidiService } from '../../providers/midi.service';
+import { MidiService } from '../../services/midi.service';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;

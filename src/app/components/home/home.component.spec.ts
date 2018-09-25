@@ -3,9 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SettingsComponent } from '../settings/settings.component';
-import { MidiService } from '../../providers/midi.service';
+import { MidiService } from '../../services/midi.service';
 import { WatcherComponent } from '../watcher/watcher.component';
-import { ControllerService } from '../../providers/controller.service';
+import { ControllerService } from '../../services/controller.service';
 import { ProfileComponent } from '../profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 

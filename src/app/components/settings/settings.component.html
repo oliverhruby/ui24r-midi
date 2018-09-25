@@ -6,15 +6,14 @@
         {{device.name}}
       </option>
     </select>
+    {{"Profile" | translate}}:
+    <select [(ngModel)]="selectedValue">
+      <option *ngFor="let profile of profiles" [ngValue]="profile">{{profile.Name}}</option>
+    </select>
   </div>
   <div class="widget">
     <div class="title">Transform</div>
-    {{"Profile" | translate}}:
-    <select>
-      <option>Korg nanoControl</option>
-      <option>Example Controller</option>
-      <option>Some Other Brick</option>
-    </select>
+    <app-profile [profile]="selectedValue"></app-profile>
   </div>
 </div>
 <div>

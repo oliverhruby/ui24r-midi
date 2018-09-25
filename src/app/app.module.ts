@@ -1,29 +1,39 @@
 import 'zone.js/dist/zone-mix';
 import 'reflect-metadata';
 import '../polyfills';
+
+// modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
-
-// NG Translate
+import { StoreModule } from '@ngrx/store';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { ElectronService } from './providers/electron.service';
-import { MidiService } from './providers/midi.service';
-import { ControllerService } from './providers/controller.service';
+// services
+import { ElectronService } from './services/electron.service';
+import { MidiService } from './services/midi.service';
+import { ControllerService } from './services/controller.service';
+import { ProfileService } from './services/profile.service';
 
+// directives
 import { WebviewDirective } from './directives/webview.directive';
 
+// components
 import { AppComponent } from './app.component';
+import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { WatcherComponent } from './components/watcher/watcher.component';
 import { ProfileComponent } from './components/profile/profile.component';
+
+// pipes
+import { HexPipe } from './pipes/hex.pipe';
+
+// reducers
+import { reducer } from './reducers/device.reducer';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,17 +43,22 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    AboutComponent,
     HomeComponent,
     WatcherComponent,
     SettingsComponent,
     ProfileComponent,
-    WebviewDirective
+    WebviewDirective,
+    HexPipe 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    StoreModule.forRoot({
+      tutorial: reducer
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -55,6 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     ElectronService,
     MidiService,
+    ProfileService,
     ControllerService
   ],
   bootstrap: [AppComponent]
