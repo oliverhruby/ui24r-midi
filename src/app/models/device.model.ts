@@ -1,10 +1,7 @@
-import { Command } from "./command.model";
-
 /**
  * Definition of a connected device
  */
-export interface Device
-{
+export interface Device {
     Name: string;
-    Commands: Command[];
+    Commands: string[];
 }

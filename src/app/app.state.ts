@@ -1,7 +1,9 @@
-import { Command } from './models/command.model';
 import { Rule } from './models/rule.model';
+import { Device } from './models/device.model';
+import { Message } from './models/message.model';
 
 export interface AppState {
-    readonly commands: Command[];
+    readonly devices: Device[];
     readonly rules: Rule[];
+    readonly messages: Message[];
 }

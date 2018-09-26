@@ -1,9 +1,8 @@
 /**
  * MIDI message
  */
-export interface Message
-{
-    Channel: number;
+export interface Message {
+    Status: number;
     Data1: number;
     Data2: number;
 }

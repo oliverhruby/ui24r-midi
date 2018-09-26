@@ -1,8 +1,17 @@
 <div class="widget">
   <div class="title">{{"Log" | translate}}</div>
-  <div class="message" *ngFor="let message of messages">
-    <div class="midi_val"><div class="midi_dec">{{message.status | number:'3.0-0'}}</div><div class="midi_hex">{{message.status | hex}}</div></div>
-    <div class="midi_val"><div class="midi_dec">{{message.data[0] | number:'3.0-0'}}</div><div class="midi_hex">{{message.data[0] | hex}}</div></div>
-    <div class="midi_val"><div class="midi_dec">{{message.data[1] | number:'3.0-0'}}</div><div class="midi_hex">{{message.data[1] | hex}}</div></div>
+  <div class="message" *ngFor="let message of messages | async">
+    <div class="midi_val">
+      <div class="midi_dec">{{message.Status | number:'3.0-0'}}</div>
+      <div class="midi_hex">{{message.Status | hex}}</div>
+    </div>
+    <div class="midi_val">
+      <div class="midi_dec">{{message.Data1 | number:'3.0-0'}}</div>
+      <div class="midi_hex">{{message.Data1 | hex}}</div>
+    </div>
+    <div class="midi_val">
+      <div class="midi_dec">{{message.Data2 | number:'3.0-0'}}</div>
+      <div class="midi_hex">{{message.Data2 | hex}}</div>
+    </div>
   </div>
 </div>

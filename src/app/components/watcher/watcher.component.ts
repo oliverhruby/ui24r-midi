@@ -1,5 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MidiService } from '../../services/midi.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.state';
+import { Message } from '../../models/message.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-watcher',
@@ -7,21 +10,12 @@ import { MidiService } from '../../services/midi.service';
   styleUrls: ['./watcher.component.scss']
 })
 export class WatcherComponent implements OnInit {
+  messages: Observable<Message[]>;
 
-  messages: any[] = [];
-
-  constructor(
-    private cd: ChangeDetectorRef,
-    private midiService: MidiService) {
-  }
+  constructor(private store: Store<AppState>, private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.midiService.getMidiStream().subscribe(message => {
-      this.messages.unshift(message);
-      this.cd.detectChanges();
-      if (this.messages.length > 100) {
-        this.messages = this.messages.slice(0, 100);
-      }
-    });
+    this.messages = this.store.select('messages');
+    this.messages.subscribe(data => this.cd.detectChanges());
   }
 }

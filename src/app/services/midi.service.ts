@@ -1,7 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
+import { AppState } from './../app.state';
 import { from } from 'rxjs/internal/observable/from';
-import { map, filter, mergeMap, flatMap } from 'rxjs/operators';
+import { map, filter, flatMap } from 'rxjs/operators';
 import { Subject } from 'rxjs/internal/Subject';
+import { Store } from '@ngrx/store';
+// import { interval } from 'rxjs';
+import * as MessageActions from './../actions/message.actions';
+import * as DeviceActions from './../actions/device.actions';
+import { Message } from '../models/message.model';
 
 declare const navigator: any;
 
@@ -10,45 +16,43 @@ declare const navigator: any;
  */
 @Injectable()
 export class MidiService {
+  constructor(
+    private store: Store<AppState>,
+    private zone: NgZone
+  ) {
+    // TODO: remove this random simulator
+    // interval(1000).subscribe(val =>
+    //   this.store.dispatch(
+    //     new MessageActions.Add({
+    //       Status: 123,
+    //       Data1: Math.floor(Math.random() * 100),
+    //       Data2: Math.floor(Math.random() * 100)
+    //     })
+    //   )
+    // );
 
-  constructor() {
+      this.listenToStateChanges();
+      this.listenToMidiEvents();
+      this.listenToInputDevices();
   }
 
   /**
-   * Provides an observable list of the connected MIDI input devices
+   * Listen to state changes in connected devices and update store
    */
-  getInputDevices() {
-    return from(navigator['requestMIDIAccess']())
-      // convert from iterable
-      .pipe(map((midi: any) => Array.from(midi.inputs)))
-      // grab just the MIDIInput
-      .pipe(map((inputs: any) => inputs[0]));
+  private listenToStateChanges() {
+    from(navigator.requestMIDIAccess())
+      .pipe(flatMap(access => this.stateChangeAsObservable(access)))
+      .subscribe(access => {
+        this.zone.run(() => {
+          this.store.dispatch(new DeviceActions.Add({Name: 'Test', Commands: []}));
+        });
+      });
   }
 
   /**
-   * Provides an observable list of the connected MIDI output devices
+   * Listen to MIDI events and update store
    */
-  getOutputDevices() {
-    return from(navigator.requestMIDIAccess())
-      // convert from iterable
-      .pipe(map((midi: any) => Array.from(midi.outputs)))
-      // grab just the MIDIInput
-      .pipe(map((device: any) => device[1]));
-  }
-
-  /**
-   * Get the state changes of MIDI devices as observable
-   */
-  getStateStream() {
-    const midiAccess$ = from(navigator.requestMIDIAccess());
-    const stateStream$ = midiAccess$.pipe(flatMap(access => this.stateChangeAsObservable(access)));
-    return stateStream$;
-  }
-
-  /**
-   * Gets the incoming MIDI message as observable
-   */
-  getMidiStream() {
+  private listenToMidiEvents() {
     const midiAccess$ = from(navigator.requestMIDIAccess());
     const messages$ = midiAccess$
       // get the first input device
@@ -58,18 +62,40 @@ export class MidiService {
       // convert the onmidimessage event to observable
       .pipe(flatMap(input => this.midiMessageAsObservable(input)))
       // transform the message to an object
-      .pipe(map((message: any) => ({
-        /* tslint:disable */ 
-        status: message.data[0] & 0xf0,
-        /* tslint:enable */
-        data: [
-          message.data[1],
-          message.data[2]
-        ],
-      })))
+      .pipe(
+        map((message: any) => ({
+          /* tslint:disable */
+          Status: message.data[0] & 0xf0,
+          /* tslint:enable */
+          Data1: message.data[1],
+          Data2: message.data[2]
+        }))
+      )
       // ignore messages with empty data (for example clock signals)
-      .pipe(filter((message: any) => message.data[1] != null));
-    return messages$;
+      .pipe(filter((message: Message) => message.Data1 != null))
+      .subscribe((message: Message) => {
+        this.zone.run(() => {
+          this.store.dispatch(new MessageActions.Add(message));
+        });
+      });
+  }
+
+  /**
+   * TODO: is this needed? can't we just update the store with the full structure?
+   * Listen to the state changes of connected devices and update store
+   */
+  private listenToInputDevices() {
+      from(navigator.requestMIDIAccess())
+        // convert from iterable
+        .pipe(map((midi: any) => Array.from(midi.inputs)))
+        // grab just the MIDIInput
+        .pipe(map((inputs: any) => inputs[0]))
+        .subscribe((inputs: any) => {
+          this.zone.run(() => {
+            // this.store.dispatch(....)
+            console.log(inputs);
+          });
+        });
   }
 
   private stateChangeAsObservable(midi) {

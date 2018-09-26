@@ -1,7 +1,6 @@
 /**
- * Command to perform on a target device
+ * Command to be executed on target device
  */
-export interface Command
-{
-    
+export interface Command {
+    Name: string;
 }

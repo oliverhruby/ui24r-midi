@@ -16,7 +16,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ElectronService } from './services/electron.service';
 import { MidiService } from './services/midi.service';
 import { ControllerService } from './services/controller.service';
-import { ProfileService } from './services/profile.service';
 
 // directives
 import { WebviewDirective } from './directives/webview.directive';
@@ -33,7 +32,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HexPipe } from './pipes/hex.pipe';
 
 // reducers
-import { reducer } from './reducers/device.reducer';
+import { reducer as deviceReducer } from './reducers/device.reducer';
+import { reducer as messageReducer } from './reducers/message.reducer';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -49,7 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SettingsComponent,
     ProfileComponent,
     WebviewDirective,
-    HexPipe 
+    HexPipe
   ],
   imports: [
     BrowserModule,
@@ -57,7 +57,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({
-      tutorial: reducer
+      devices: deviceReducer,
+      messages: messageReducer
     }),
     TranslateModule.forRoot({
       loader: {
@@ -70,7 +71,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     ElectronService,
     MidiService,
-    ProfileService,
     ControllerService
   ],
   bootstrap: [AppComponent]

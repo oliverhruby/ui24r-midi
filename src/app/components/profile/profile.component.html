@@ -1,10 +1,13 @@
 <div class="widget">
   <div class="title">{{"Profile" | translate}}</div>
-  <div>{{"Name" | translate}}: {{profile.Name}}</div>
-  <div>{{"Commands" | translate}}:</div>
-  <div class="commands">
-    <div *ngFor="let command of profile.Commands" class="command">
-      {{command}}
+  <div *ngIf="profile">
+    <div>{{"Name" | translate}}: {{profile.Name}}</div>
+    <div>{{"Commands" | translate}}:</div>
+    <div class="commands" *ngIf="profile">
+      <div *ngFor="let command of profile.Commands" class="command">
+        {{command}}
+      </div>
+      <input type="button" value="+">
     </div>
   </div>
 </div>

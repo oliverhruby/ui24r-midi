@@ -10,14 +10,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   devices: Observable<Device[]>;
 
-  constructor(private store: Store<AppState>) { 
+  constructor(private store: Store<AppState>) {
     this.devices = store.select('devices');
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -8,6 +8,7 @@ import { WatcherComponent } from '../watcher/watcher.component';
 import { ControllerService } from '../../services/controller.service';
 import { ProfileComponent } from '../profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AboutComponent } from '../about/about.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -16,21 +17,15 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
+        AboutComponent,
         ProfileComponent,
         HomeComponent,
         WatcherComponent,
         SettingsComponent
       ],
-      providers: [
-        MidiService,
-        ControllerService
-      ],
-      imports: [
-        HttpClientModule,
-        TranslateModule.forRoot()
-      ]
-    })
-      .compileComponents();
+      providers: [MidiService, ControllerService],
+      imports: [HttpClientModule, TranslateModule.forRoot()]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -42,5 +37,4 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MidiService } from '../../services/midi.service';
-import { ProfileService } from '../../services/profile.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Device } from '../../models/device.model';
+import { AppState } from '../../app.state';
 
 @Component({
   selector: 'app-settings',
@@ -8,29 +10,14 @@ import { ProfileService } from '../../services/profile.service';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-
-  profile: any;
+  devices: Observable<Device[]>;
   profiles: any[];
-
   inputDevices: any[];
   outputDevices: any[];
 
-  constructor(
-    private midiService: MidiService,
-    private profileService: ProfileService
-  ) {}
-
-  ngOnInit() {
-    this.profiles = this.profileService.getProfiles();
-    this.profile = this.profileService.getProfiles()[2];
-        
-    this.midiService.getInputDevices().subscribe(data => {
-      console.log(data);
-      this.inputDevices = data;
-    });
-    this.midiService.getOutputDevices().subscribe(data => {
-      console.log(data);
-      this.outputDevices = data;
-    });
+  constructor(private store: Store<AppState>) {
+    this.devices = this.store.select('devices');
   }
+
+  ngOnInit() {}
 }

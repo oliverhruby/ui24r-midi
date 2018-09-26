@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SettingsComponent } from './settings.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MidiService } from '../../services/midi.service';
+import { FormsModule } from '@angular/forms';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;
@@ -13,6 +14,7 @@ describe('SettingsComponent', () => {
       declarations: [ SettingsComponent ],
       providers: [ MidiService ],
       imports: [
+        FormsModule,
         TranslateModule.forRoot()
       ]
     })

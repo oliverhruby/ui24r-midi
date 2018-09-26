@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ControllerService } from '../../services/controller.service';
 import { MidiService } from '../../services/midi.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HexPipe } from '../../pipes/hex.pipe';
 
 describe('WatcherComponent', () => {
   let component: WatcherComponent;
@@ -13,6 +14,7 @@ describe('WatcherComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
+        HexPipe,
         WatcherComponent
       ],
       providers: [

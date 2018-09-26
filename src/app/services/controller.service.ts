@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { MidiService } from './midi.service';
 import { HttpClient } from '@angular/common/http';
+import { AppState } from '../app.state';
+import { Store } from '@ngrx/store';
 
 /**
  * Translates the incoming MIDI data to console commands using a device profile
@@ -15,10 +16,10 @@ export class ControllerService {
   };
 
   constructor(
-    private midiService: MidiService,
+    private store: Store<AppState>,
     private httpClient: HttpClient
   ) {
-    this.midiService.getMidiStream()
+    this.store.select('messages')
       .subscribe(message => this.translate(message));
   }
 
@@ -27,6 +28,7 @@ export class ControllerService {
    * @param input Incoming MIDI message
    */
   translate(input) {
+    console.log('translating');
     this.profile.rules.forEach(element => {
       if (input.status === element[0]) {
         console.log(input.status + ',' + input.data[0] + ',' + input.data[1] + ' ==> ' + element[1]);
