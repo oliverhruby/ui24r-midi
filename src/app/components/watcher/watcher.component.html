@@ -1,6 +1,6 @@
-<div class="widget">
-  <div class="title">{{"Log" | translate}}</div>
-  <div class="message" *ngFor="let message of messages | async">
+<div class="widget" style="height:300px;overflow:auto">
+  <div class="title">{{"Input Messages" | translate}}</div>
+  <div class="message" *ngFor="let message of messages$ | async">
     <div class="midi_val">
       <div class="midi_dec">{{message.Status | number:'3.0-0'}}</div>
       <div class="midi_hex">{{message.Status | hex}}</div>
@@ -12,6 +12,15 @@
     <div class="midi_val">
       <div class="midi_dec">{{message.Data2 | number:'3.0-0'}}</div>
       <div class="midi_hex">{{message.Data2 | hex}}</div>
+    </div>
+  </div>
+</div>
+<div class="widget" style="height:300px;overflow:auto">
+  <div class="title">{{"Output Messages" | translate}}</div>
+  <div class="message" *ngFor="let command of commands$ | async">
+    <div class="midi_val">
+      <div class="midi_dec">{{command.Name}}</div>
+      <div class="midi_hex">{{command.Code}}</div>
     </div>
   </div>
 </div>

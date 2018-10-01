@@ -6,9 +6,11 @@ import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -33,7 +35,12 @@ import { HexPipe } from './pipes/hex.pipe';
 
 // reducers
 import { reducer as deviceReducer } from './reducers/device.reducer';
+import { reducer as profileReducer } from './reducers/profile.reducer';
 import { reducer as messageReducer } from './reducers/message.reducer';
+import { reducer as commandReducer } from './reducers/command.reducer';
+
+// effects
+import { ControllerEffects } from './effects/controller.effects';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -54,12 +61,18 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({
+      commands: commandReducer,
       devices: deviceReducer,
-      messages: messageReducer
+      messages: messageReducer,
+      profiles: profileReducer
     }),
+    EffectsModule.forRoot([
+      ControllerEffects
+    ]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -70,8 +83,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     ElectronService,
-    MidiService,
-    ControllerService
+    ControllerService,
+    MidiService
   ],
   bootstrap: [AppComponent]
 })

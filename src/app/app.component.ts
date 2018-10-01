@@ -3,7 +3,7 @@ import { ElectronService } from './services/electron.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
 import { MidiService } from './services/midi.service';
-import { ControllerService } from './services/controller.service';
+// import { ControllerService } from './services/controller.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,8 @@ export class AppComponent {
   constructor(
     public electronService: ElectronService,
     private translate: TranslateService,
-    private midiService: MidiService,
-    private controllerService: ControllerService
+    private midiService: MidiService
+    // private controllerService: ControllerService
   ) {
 
     translate.setDefaultLang('en');

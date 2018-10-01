@@ -2,38 +2,38 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppState } from '../app.state';
 import { Store } from '@ngrx/store';
+import * as CommandActions from './../actions/command.actions';
+import { Profile } from '../models/profile.model';
+import { Message } from '../models/message.model';
 
 /**
  * Translates the incoming MIDI data to console commands using a device profile
  */
 @Injectable()
 export class ControllerService {
-  profile = {
-    rules: [
-      ['144', 'SETD^1111'],
-      ['176', 'SETD^2222']
-    ]
-  };
+  profile: Profile;
 
-  constructor(
-    private store: Store<AppState>,
-    private httpClient: HttpClient
-  ) {
-    this.store.select('messages')
-      .subscribe(message => this.translate(message));
+  constructor(private store: Store<AppState>, private httpClient: HttpClient) {
+    this.store
+      .select('profiles')
+      .subscribe(profiles => (this.profile = profiles[0]));
   }
 
   /**
    * Translate the midi data to the console command
    * @param input Incoming MIDI message
    */
-  translate(input) {
-    console.log('translating');
-    this.profile.rules.forEach(element => {
-      if (input.status === element[0]) {
-        console.log(input.status + ',' + input.data[0] + ',' + input.data[1] + ' ==> ' + element[1]);
-        this.httpClient.get('http://127.0.0.1/test').subscribe();
-      }
-    });
+  translate(message: Message) {
+    if (this.profile && this.profile.Events) {
+      this.profile.Events.forEach(event => {
+        if (message.Data1 === event.Control) {
+          console.log('Ui Command: ...');
+          this.store.dispatch(
+            new CommandActions.Add({ Id: 1, Name: 'Test', Code: '' })
+          );
+          // this.httpClient.get('http://127.0.0.1/test').subscribe();
+        }
+      });
+    }
   }
 }

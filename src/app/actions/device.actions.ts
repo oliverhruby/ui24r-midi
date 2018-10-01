@@ -4,15 +4,15 @@ import { Device } from '../models/device.model';
 /**
  * All the constants to define our actions
  */
-export const ADD_DEVICE = '[Devices] add device';
+export const UPDATE_DEVICES = '[Devices] update';
 
 /**
  * Implementation of all actions that we handle
  */
-export class Add implements Action {
-    readonly type = ADD_DEVICE;
+export class Update implements Action {
+  readonly type = UPDATE_DEVICES;
 
-    constructor(public device: Device) {}
+  constructor(public devices: Device[]) {}
 }
 
-export type Actions = Add;
+export type Actions = Update;

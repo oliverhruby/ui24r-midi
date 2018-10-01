@@ -3,12 +3,17 @@
 [![Build Status](https://travis-ci.org/oliverhruby/ui24r-midi.svg?branch=master)](https://travis-ci.org/oliverhruby/ui24r-midi)
 [![dependencies Status](https://david-dm.org/oliverhruby/ui24r-midi/status.svg)](https://david-dm.org/oliverhruby/ui24r-midi)
 
-The aim of this project is to create a MIDI controller for [Soundcraft Ui24R](https://www.soundcraft.com/en/products/ui24r) mixing console. It doesn't currently support MIDI control. The controller would connect the MIDI device device (control surface) to the Ui24R console and translate the MIDI commands to the native commands or the opposite way, depending on the settings. The user can configure the binding of the commands.
+The aim of this project is to create a MIDI controller for [Soundcraft Ui24R](https://www.soundcraft.com/en/products/ui24r) mixing console.
+It doesn't currently support MIDI control. The controller would connect the MIDI device (control surface) to the Ui24R console
+and translate the MIDI commands to the native commands or the opposite way, depending on the settings. 
+The user can configure the rules to transform.
 
 ![MIDI Controller Architecture](docs/MIDIController_architecture.png)
 
 ## Current Status
-The project is currently in the *ALPHA* phase, the application skeleton is being prepared.
+The project is currently in the *ALPHA* phase, the application skeleton is being prepared. It already listens to connected MIDI devices,
+shows incoming MIDI messages, the device profile manager is being prepared now, also the rules editor which will drive the controller service
+that will transform the input to output.
 
 ## Current Goals
 * Connect to console using IP or address
@@ -21,7 +26,10 @@ The project is currently in the *ALPHA* phase, the application skeleton is being
 * Allow some "MIDI learn" functionality that will help with configuration
 
 ## Architecture of the application
-The application is built in [Angular](https://angular.io/), reactive programming and state management with the redux pattern is achieved by [Reactive Extensions for Angular](https://github.com/ngrx). To support multiple platforms like Linux, Windows and OSX the application is packaged using [Electron](https://electronjs.org/). For now it will be a standalone application, later we can think about running it directly in browser (which needs to support [Web MIDI Api](https://webaudio.github.io/web-midi-api/)).
+The application is built in [Angular](https://angular.io/), reactive programming and state management with the redux pattern
+is achieved by [Reactive Extensions for Angular](https://github.com/ngrx). To support multiple platforms like Linux, Windows
+and OSX the application is packaged using [Electron](https://electronjs.org/). For now it will be a standalone application,
+later we can think about running it directly in browser (which needs to support [Web MIDI Api](https://webaudio.github.io/web-midi-api/)).
 
 ## Future goals
 * once the config format will be stabile the community can help creating setting for various common devices

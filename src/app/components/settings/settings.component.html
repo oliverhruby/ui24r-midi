@@ -1,24 +1,23 @@
 <div>
   <div class="widget">
     <div class="title">{{"Input" | translate}}</div>
-    {{"MIDI Input" | translate}}: <select>
-      <option *ngFor="let device of inputDevices">
-        {{device.name}}
+    {{"MIDI Input" | translate}}: <select class="form-conrol">
+      <option *ngFor="let device of inputDevices | async">
+        {{device.Name}}
       </option>
-    </select>
-    {{"Profile" | translate}}:
-    <select [(ngModel)]="selectedValue">
-      <option *ngFor="let device of devices | async" [ngValue]="device">{{device.Name}}</option>
     </select>
   </div>
   <div class="widget">
-    <div class="title">Transform</div>
+    <div class="title">{{"Profile" | translate}}:</div>
+    <select [(ngModel)]="selectedValue" class="form-conrol">
+      <option *ngFor="let profile of profiles | async" [ngValue]="profile">{{profile.Name}}</option>
+    </select>
     <app-profile [profile]="selectedValue"></app-profile>
   </div>
 </div>
 <div>
   <div class="widget">
     <div class="title">{{"Output" | translate}}</div>
-    {{"URL" | translate}}: <input type="text" id="ip">
+    {{"URL" | translate}}: <input type="text" id="ip" class="font-control">
   </div>
 </div>

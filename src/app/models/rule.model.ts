@@ -1,6 +1,7 @@
 /**
- * Single rule for input to output transformations
+ * Controller rule
  */
 export interface Rule {
-    Name: string;
+  EventId: number;
+  CommandId: number;
 }

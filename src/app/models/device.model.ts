@@ -1,7 +1,6 @@
 /**
- * Definition of a connected device
+ * MIDI device
  */
 export interface Device {
-    Name: string;
-    Commands: string[];
+  Name: string;
 }

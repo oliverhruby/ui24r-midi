@@ -1,13 +1,39 @@
-<div class="widget">
-  <div class="title">{{"Profile" | translate}}</div>
-  <div *ngIf="profile">
-    <div>{{"Name" | translate}}: {{profile.Name}}</div>
-    <div>{{"Commands" | translate}}:</div>
-    <div class="commands" *ngIf="profile">
-      <div *ngFor="let command of profile.Commands" class="command">
-        {{command}}
-      </div>
-      <input type="button" value="+">
+<div *ngIf="profile">
+  <form novalidate [formGroup]="myForm">
+    <div class="form-group">
+      <label>{{"Name" | translate}}</label>
+      <input type="text" formControlName="Name" class="form-control">
     </div>
-  </div>
+    <div class="form-group">
+      <label>{{"Description" | translate}}</label>
+      <textarea formControlName="Description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+      <label>{{"Target" | translate}}</label>
+      <input type="text" formControlName="Target" class="form-control">
+    </div>
+    <div class="form-group">
+      <div class="param">{{"Events" | translate}}:</div>
+      <div>
+        <div class="commands" *ngIf="profile">
+          <div *ngFor="let event of profile.Events" class="command">
+            <span [innerHTML]="event.Name"></span><span class="parameter">{{event.Control}}</span>
+          </div>
+          <input type="button" class="btn" value="+">
+        </div>
+        <div>{{"Commands" | translate}}:</div>
+        <div class="commands" *ngIf="profile">
+          <div *ngFor="let command of profile.Commands" class="command">
+            <span [innerHTML]="command.Name"></span><span class="parameter">{{command.Code}}</span>
+          </div>
+          <input type="button" class="btn btn-outline-primary" value="+">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="btn-group" role="group">
+  <button class="btn btn-outline-primary" (click)="delete()">{{"Delete" | translate}}</button>
+  <button class="btn btn-outline-primary" (click)="copy()">{{"Copy" | translate}}</button>
+  <button class="btn btn-outline-primary" (click)="add()">{{"Add" | translate}}</button>
 </div>

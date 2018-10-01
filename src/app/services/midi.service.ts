@@ -4,9 +4,9 @@ import { from } from 'rxjs/internal/observable/from';
 import { map, filter, flatMap } from 'rxjs/operators';
 import { Subject } from 'rxjs/internal/Subject';
 import { Store } from '@ngrx/store';
-// import { interval } from 'rxjs';
 import * as MessageActions from './../actions/message.actions';
 import * as DeviceActions from './../actions/device.actions';
+import * as CommandActions from './../actions/command.actions';
 import { Message } from '../models/message.model';
 
 declare const navigator: any;
@@ -20,20 +20,8 @@ export class MidiService {
     private store: Store<AppState>,
     private zone: NgZone
   ) {
-    // TODO: remove this random simulator
-    // interval(1000).subscribe(val =>
-    //   this.store.dispatch(
-    //     new MessageActions.Add({
-    //       Status: 123,
-    //       Data1: Math.floor(Math.random() * 100),
-    //       Data2: Math.floor(Math.random() * 100)
-    //     })
-    //   )
-    // );
-
       this.listenToStateChanges();
       this.listenToMidiEvents();
-      this.listenToInputDevices();
   }
 
   /**
@@ -41,10 +29,12 @@ export class MidiService {
    */
   private listenToStateChanges() {
     from(navigator.requestMIDIAccess())
-      .pipe(flatMap(access => this.stateChangeAsObservable(access)))
-      .subscribe(access => {
+    .pipe(flatMap(access => this.stateChangeAsObservable(access)))
+    .pipe(filter((device: any) => device.port.type === 'input'))
+      .subscribe((access: any) => {
         this.zone.run(() => {
-          this.store.dispatch(new DeviceActions.Add({Name: 'Test', Commands: []}));
+          // console.log(access);
+          this.store.dispatch(new DeviceActions.Update([{ Name: access.port.name}]));
         });
       });
   }
@@ -53,8 +43,8 @@ export class MidiService {
    * Listen to MIDI events and update store
    */
   private listenToMidiEvents() {
-    const midiAccess$ = from(navigator.requestMIDIAccess());
-    const messages$ = midiAccess$
+    // navigator.requestMIDIAccess().then(data => console.log(data.inputs.values().next().value));
+    from(navigator.requestMIDIAccess())
       // get the first input device
       .pipe(map((midi: any) => midi.inputs.values().next().value))
       // stop if it's undefined
@@ -75,27 +65,10 @@ export class MidiService {
       .pipe(filter((message: Message) => message.Data1 != null))
       .subscribe((message: Message) => {
         this.zone.run(() => {
+          // console.log(message);
           this.store.dispatch(new MessageActions.Add(message));
         });
       });
-  }
-
-  /**
-   * TODO: is this needed? can't we just update the store with the full structure?
-   * Listen to the state changes of connected devices and update store
-   */
-  private listenToInputDevices() {
-      from(navigator.requestMIDIAccess())
-        // convert from iterable
-        .pipe(map((midi: any) => Array.from(midi.inputs)))
-        // grab just the MIDIInput
-        .pipe(map((inputs: any) => inputs[0]))
-        .subscribe((inputs: any) => {
-          this.zone.run(() => {
-            // this.store.dispatch(....)
-            console.log(inputs);
-          });
-        });
   }
 
   private stateChangeAsObservable(midi) {

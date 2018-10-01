@@ -1,7 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { Message } from '../../models/message.model';
+import { Command } from '../../models/command.model';
+import { Profile } from '../../models/profile.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,12 +12,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./watcher.component.scss']
 })
 export class WatcherComponent implements OnInit {
-  messages: Observable<Message[]>;
+  messages$: Observable<Message[]>;
+  commands$: Observable<Command[]>;
 
-  constructor(private store: Store<AppState>, private cd: ChangeDetectorRef) {}
+  constructor(
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit() {
-    this.messages = this.store.select('messages');
-    this.messages.subscribe(data => this.cd.detectChanges());
+    this.messages$ = this.store.select((state: AppState) => state.messages);
+    this.commands$ = this.store.select((state: AppState) => state.commands);
   }
 }

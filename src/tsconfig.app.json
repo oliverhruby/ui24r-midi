@@ -8,5 +8,8 @@
   },
   "exclude": [
     "**/*.spec.ts"
+  ],
+  "types": [
+    "webmidi"
   ]
 }
