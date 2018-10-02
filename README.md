@@ -1,7 +1,7 @@
 # MIDI Controller for Soundcraft Ui24R
 
 [![Build Status](https://travis-ci.org/oliverhruby/ui24r-midi.svg?branch=master)](https://travis-ci.org/oliverhruby/ui24r-midi)
-[![Coverage Status](https://coveralls.io/repos/oliverhruby/ui24r-midi/badge.svg?branch=master)](https://coveralls.io/r/oliverhruby/ui24r-midi?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/oliverhruby/ui24r-midi/badge.svg?branch=master)](https://coveralls.io/github/oliverhruby/ui24r-midi?branch=master)
 [![codebeat badge](https://codebeat.co/badges/ffc107ee-93e0-4db5-82e1-2f492835c725)](https://codebeat.co/projects/github-com-oliverhruby-ui24r-midi-master)
 [![Dependencies](https://david-dm.org/oliverhruby/ui24r-midi/status.svg)](https://david-dm.org/oliverhruby/ui24r-midi)
 
