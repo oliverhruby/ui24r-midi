@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { Message } from '../../models/message.model';
 import { Command } from '../../models/command.model';
-import { Profile } from '../../models/profile.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -20,7 +19,7 @@ export class WatcherComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.messages$ = this.store.select((state: AppState) => state.messages);
-    this.commands$ = this.store.select((state: AppState) => state.commands);
+    this.messages$ = this.store.pipe(select((state: AppState) => state.messages));
+    this.commands$ = this.store.pipe(select((state: AppState) => state.commands));
   }
 }

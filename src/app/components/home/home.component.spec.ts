@@ -9,6 +9,13 @@ import { ControllerService } from '../../services/controller.service';
 import { ProfileComponent } from '../profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from '../about/about.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HexPipe } from '../../pipes/hex.pipe';
+import { reducer as deviceReducer } from '../../reducers/device.reducer';
+import { reducer as profileReducer } from '../../reducers/profile.reducer';
+import { reducer as messageReducer } from '../../reducers/message.reducer';
+import { reducer as commandReducer } from '../../reducers/command.reducer';
+import { StoreModule } from '@ngrx/store';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -21,10 +28,24 @@ describe('HomeComponent', () => {
         ProfileComponent,
         HomeComponent,
         WatcherComponent,
-        SettingsComponent
+        SettingsComponent,
+        HexPipe
       ],
-      providers: [MidiService, ControllerService],
-      imports: [HttpClientModule, TranslateModule.forRoot()]
+      providers: [
+        MidiService,
+        ControllerService
+      ],
+      imports: [
+        StoreModule.forRoot({
+          commands: commandReducer,
+          devices: deviceReducer,
+          messages: messageReducer,
+          profiles: profileReducer
+        }),
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        TranslateModule.forRoot()]
     }).compileComponents();
   }));
 
