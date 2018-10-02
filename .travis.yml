@@ -12,6 +12,8 @@ install:
   - npm install
 script:
   - ng lint
-  - npm run test
+  - npm run test --code-coverage
   - npm run e2e
   - npm run build
+after_script:
+  - npm install coveralls && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage
