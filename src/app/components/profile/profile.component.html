@@ -26,13 +26,14 @@
           <div *ngFor="let command of profile.Commands" class="command">
             <span [innerHTML]="command.Name"></span><span class="parameter">{{command.Code}}</span>
           </div>
-          <input type="button" class="btn btn-outline-primary" value="+">
+          <input type="button" class="btn btn-outline-primary" value="+" (click)="addCommand()">
         </div>
       </div>
     </div>
   </form>
 </div>
 <div class="btn-group" role="group">
+  <button class="btn btn-outline-primary" (click)="save()">{{"Save" | translate}}</button>
   <button class="btn btn-outline-primary" (click)="delete()">{{"Delete" | translate}}</button>
   <button class="btn btn-outline-primary" (click)="copy()">{{"Copy" | translate}}</button>
   <button class="btn btn-outline-primary" (click)="add()">{{"Add" | translate}}</button>

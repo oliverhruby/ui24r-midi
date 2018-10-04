@@ -1,4 +1,5 @@
 import { app, BrowserWindow, screen } from 'electron';
+import installExtension, { REDUX_DEVTOOLS } from 'electron-devtools-installer';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -30,8 +31,6 @@ function createWindow() {
     }));
   }
 
-  win.webContents.openDevTools();
-
   // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store window
@@ -40,6 +39,12 @@ function createWindow() {
     win = null;
   });
 
+  installExtension(REDUX_DEVTOOLS).then((name) => {
+    console.log(`Added extension: ${name}`);
+    win.webContents.openDevTools();
+  }).catch((err) => {
+    console.log('An error occured', err);
+  });
 }
 
 try {

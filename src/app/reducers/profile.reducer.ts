@@ -372,8 +372,13 @@ export function reducer(
   switch (action.type) {
     case ProfileActions.ADD_PROFILE:
       return [...state, action.profile];
+    case ProfileActions.UPDATE_PROFILE:
+      return state.map((profile) => {
+        if (profile.Id === action.profile.Id) {
+          return action.profile;
+        } else { return profile; }
+      });
     case ProfileActions.DELETE_PROFILE:
-      console.log(action.id);
       return state.filter(profile => profile.Id !== action.id);
     default:
       return state;

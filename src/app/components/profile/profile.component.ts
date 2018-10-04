@@ -39,12 +39,27 @@ export class ProfileComponent implements OnChanges, OnInit {
     }
   }
 
+  save() {
+    this.profile.Name = this.myForm.value.Name;
+    this.profile.Description = this.myForm.value.Description;
+    this.profile.Target = this.myForm.value.Target;
+    this.store.dispatch(new ProfileActions.Update(this.profile));
+  }
+
   delete() {
     this.store.dispatch(new ProfileActions.Delete(this.profile.Id));
   }
 
+  add() {
+    this.store.dispatch(new ProfileActions.Add(this.profile));
+  }
+
   copy() {
     this.store.dispatch(new ProfileActions.Add(this.profile));
+  }
+
+  addCommand() {
+
   }
 
 }

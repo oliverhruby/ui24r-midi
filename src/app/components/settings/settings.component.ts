@@ -11,6 +11,7 @@ import { Device } from '../../models/device.model';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+  selectedValue: Profile;
   profiles: Observable<Profile[]>;
   inputDevices: Observable<Device[]>;
 

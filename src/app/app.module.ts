@@ -1,6 +1,7 @@
 import 'zone.js/dist/zone-mix';
 import 'reflect-metadata';
 import '../polyfills';
+import { AppConfig } from '../environments/environment';
 
 // modules
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -69,6 +71,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       devices: deviceReducer,
       messages: messageReducer,
       profiles: profileReducer
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: AppConfig.production, // Restrict extension to log-only mode
     }),
     EffectsModule.forRoot([
       ControllerEffects
