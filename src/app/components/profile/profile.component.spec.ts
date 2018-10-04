@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProfileComponent } from './profile.component';
 import { StoreModule } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { reducer as deviceReducer } from '../../reducers/device.reducer';
 import { reducer as profileReducer } from '../../reducers/profile.reducer';
@@ -27,6 +28,7 @@ describe('ProfileComponent', () => {
           profiles: profileReducer
         }),
         FormsModule,
+        FontAwesomeModule,
         ReactiveFormsModule,
         TranslateModule.forRoot()
       ]

@@ -4,6 +4,7 @@ import { SettingsComponent } from './settings.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MidiService } from '../../services/midi.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from '../profile/profile.component';
 import { reducer as deviceReducer } from '../../reducers/device.reducer';
 import { reducer as profileReducer } from '../../reducers/profile.reducer';
@@ -31,6 +32,7 @@ describe('SettingsComponent', () => {
           profiles: profileReducer
         }),
         FormsModule,
+        FontAwesomeModule,
         ReactiveFormsModule,
         TranslateModule.forRoot()
       ]

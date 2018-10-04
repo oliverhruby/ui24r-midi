@@ -16,6 +16,7 @@ import { reducer as profileReducer } from '../../reducers/profile.reducer';
 import { reducer as messageReducer } from '../../reducers/message.reducer';
 import { reducer as commandReducer } from '../../reducers/command.reducer';
 import { StoreModule } from '@ngrx/store';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -43,6 +44,7 @@ describe('HomeComponent', () => {
           profiles: profileReducer
         }),
         FormsModule,
+        FontAwesomeModule,
         ReactiveFormsModule,
         HttpClientModule,
         TranslateModule.forRoot()]

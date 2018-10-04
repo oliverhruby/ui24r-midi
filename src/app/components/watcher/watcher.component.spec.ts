@@ -6,6 +6,7 @@ import { ControllerService } from '../../services/controller.service';
 import { MidiService } from '../../services/midi.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HexPipe } from '../../pipes/hex.pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
 import { reducer as deviceReducer } from '../../reducers/device.reducer';
 import { reducer as profileReducer } from '../../reducers/profile.reducer';
@@ -34,6 +35,7 @@ describe('WatcherComponent', () => {
           profiles: profileReducer
         }),
         HttpClientModule,
+        FontAwesomeModule,
         TranslateModule.forRoot()
       ]
     })
