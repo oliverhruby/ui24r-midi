@@ -16,6 +16,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+// FontAwesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPlay, faCaretSquareDown, faCaretSquareUp, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+library.add(faPlay, faCaretSquareDown, faCaretSquareUp, faPlusSquare);
+
 // services
 import { ElectronService } from './services/electron.service';
 import { MidiService } from './services/midi.service';
@@ -64,6 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({

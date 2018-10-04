@@ -1,5 +1,5 @@
 <div class="widget" style="height:300px;overflow:auto">
-  <div class="title">{{"Input Messages" | translate}}</div>
+  <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Input Messages" | translate}}</div>
   <div class="message" *ngFor="let message of messages$ | async">
     <div class="midi_val">
       <div class="midi_dec">{{message.Status | number:'3.0-0'}}</div>
@@ -16,7 +16,7 @@
   </div>
 </div>
 <div class="widget" style="height:300px;overflow:auto">
-  <div class="title">{{"Output Messages" | translate}}</div>
+  <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Output Messages" | translate}}</div>
   <div class="message" *ngFor="let command of commands$ | async">
     <div class="midi_val">
       <div class="midi_dec">{{command.Name}}</div>
