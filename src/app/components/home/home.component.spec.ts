@@ -10,6 +10,7 @@ import { ProfileComponent } from '../profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from '../about/about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BinaryPipe } from '../../pipes/binary.pipe';
 import { HexPipe } from '../../pipes/hex.pipe';
 import { reducer as deviceReducer } from '../../reducers/device.reducer';
 import { reducer as profileReducer } from '../../reducers/profile.reducer';
@@ -30,6 +31,7 @@ describe('HomeComponent', () => {
         HomeComponent,
         WatcherComponent,
         SettingsComponent,
+        BinaryPipe,
         HexPipe
       ],
       providers: [

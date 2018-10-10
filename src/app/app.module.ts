@@ -39,6 +39,7 @@ import { WatcherComponent } from './components/watcher/watcher.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 // pipes
+import { BinaryPipe } from './pipes/binary.pipe';
 import { HexPipe } from './pipes/hex.pipe';
 
 // reducers
@@ -64,6 +65,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SettingsComponent,
     ProfileComponent,
     WebviewDirective,
+    BinaryPipe,
     HexPipe
   ],
   imports: [

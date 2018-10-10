@@ -4,14 +4,17 @@
     <div class="midi_val">
       <div class="midi_dec">{{message.Status | number:'3.0-0'}}</div>
       <div class="midi_hex">{{message.Status | hex}}</div>
+      <div class="midi_binary">{{message.Status | binary}}</div>
     </div>
     <div class="midi_val">
       <div class="midi_dec">{{message.Data1 | number:'3.0-0'}}</div>
       <div class="midi_hex">{{message.Data1 | hex}}</div>
+      <div class="midi_binary">{{message.Data1 | binary}}</div>
     </div>
     <div class="midi_val">
       <div class="midi_dec">{{message.Data2 | number:'3.0-0'}}</div>
       <div class="midi_hex">{{message.Data2 | hex}}</div>
+      <div class="midi_binary">{{message.Data2 | binary}}</div>
     </div>
   </div>
 </div>
