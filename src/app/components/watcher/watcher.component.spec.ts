@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ControllerService } from '../../services/controller.service';
 import { MidiService } from '../../services/midi.service';
 import { HttpClientModule } from '@angular/common/http';
+import { BinaryPipe } from '../../pipes/binary.pipe';
 import { HexPipe } from '../../pipes/hex.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
@@ -20,6 +21,7 @@ describe('WatcherComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
+        BinaryPipe,
         HexPipe,
         WatcherComponent
       ],
