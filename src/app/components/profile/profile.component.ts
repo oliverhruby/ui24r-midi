@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store' ;
 import { FormGroup, FormBuilder } from '@angular/forms';
 import * as ProfileActions from '../../actions/profile.actions';
 import { Profile } from '../../models/profile.model';
+import { Update } from '@ngrx/entity';
 
 @Component({
   selector: 'app-profile',
@@ -40,22 +41,24 @@ export class ProfileComponent implements OnChanges, OnInit {
   }
 
   save() {
-    this.profile.Name = this.myForm.value.Name;
-    this.profile.Description = this.myForm.value.Description;
-    this.profile.Target = this.myForm.value.Target;
-    this.store.dispatch(new ProfileActions.Update(this.profile));
+    const changes = this.myForm.value;
+    const profile: Update<Profile> = {
+      id: this.profile.Id,
+      changes
+    };
+    this.store.dispatch(new ProfileActions.UpdateProfile({profile}));
   }
 
   delete() {
-    this.store.dispatch(new ProfileActions.Delete(this.profile.Id));
+    this.store.dispatch(new ProfileActions.DeleteProfile({ id: this.profile.Id }));
   }
 
   add() {
-    this.store.dispatch(new ProfileActions.Add(this.profile));
+    this.store.dispatch(new ProfileActions.AddProfile(this.profile));
   }
 
   copy() {
-    this.store.dispatch(new ProfileActions.Add(this.profile));
+    this.store.dispatch(new ProfileActions.AddProfile(this.profile));
   }
 
   addCommand() {

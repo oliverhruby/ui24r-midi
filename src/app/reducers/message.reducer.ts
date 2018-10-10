@@ -9,7 +9,7 @@ export function reducer(
 ) {
   switch (action.type) {
     case MessageActions.ADD_MESSAGE:
-      state.unshift(action.message);
+      state.unshift(action.payload);
       if (state.length > 100) {
         state = state.slice(0, 100);
       }

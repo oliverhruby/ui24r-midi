@@ -16,7 +16,7 @@ export class ControllerEffects {
     ofType<MessageActions.Add>(
       MessageActions.ADD_MESSAGE
     ),
-    tap(data => this.controllerService.translate(data.message))
+    tap(data => this.controllerService.translate(data.payload))
   );
 
   constructor(private actions$: Actions,

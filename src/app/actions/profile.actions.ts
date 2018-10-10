@@ -1,26 +1,41 @@
 import { Action } from '@ngrx/store';
 import { Profile } from '../models/profile.model';
+import { Update } from '@ngrx/entity';
 
 export const ADD_PROFILE = '[Profiles] add profile';
+export const EDIT_PROFILE = '[Profiles] edit profile';
+export const SELECT_PROFILE = '[Profiles] select profile';
 export const UPDATE_PROFILE = '[Profiles] update profile';
-export const DELETE_PROFILE = '[Profiles] udelete profile';
+export const DELETE_PROFILE = '[Profiles] delete profile';
 
-export class Add implements Action {
+export class AddProfile implements Action {
   readonly type = ADD_PROFILE;
 
-  constructor(public profile: Profile) {}
+  constructor(public payload: Profile) {}
 }
 
-export class Update implements Action {
+export class EditProfile implements Action {
+  readonly type = EDIT_PROFILE;
+
+  constructor(public payload: Profile) {}
+}
+
+export class SelectProfile implements Action {
+  readonly type = SELECT_PROFILE;
+
+  constructor(public payload: Profile) {}
+}
+
+export class UpdateProfile implements Action {
   readonly type = UPDATE_PROFILE;
 
-  constructor(public profile: Profile) {}
+  constructor(public payload: { profile: Update<Profile> }) {}
 }
 
-export class Delete implements Action {
+export class DeleteProfile implements Action {
   readonly type = DELETE_PROFILE;
 
-  constructor(public id: number) {}
+  constructor(public payload: { id: number }) {}
 }
 
-export type Actions = Add | Update | Delete;
+export type Actions = AddProfile | UpdateProfile | DeleteProfile | EditProfile | SelectProfile;

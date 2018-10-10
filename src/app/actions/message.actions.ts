@@ -12,7 +12,7 @@ export const ADD_MESSAGE = '[Messages] add message';
 export class Add implements Action {
   readonly type = ADD_MESSAGE;
 
-  constructor(public message: Message) {}
+  constructor(public payload: Message) {}
 }
 
 export type Actions = Add;

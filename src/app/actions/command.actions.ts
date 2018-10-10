@@ -12,7 +12,7 @@ export const ADD_COMMAND = '[Commands] add command';
 export class Add implements Action {
   readonly type = ADD_COMMAND;
 
-  constructor(public command: Command) {
+  constructor(public payload: Command) {
   }
 }
 
