@@ -4,5 +4,6 @@
 export interface Command {
   Id: number;
   Name: string;
+  Category?: string;
   Code: string;
 }

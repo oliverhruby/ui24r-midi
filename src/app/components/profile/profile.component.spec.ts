@@ -7,7 +7,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { reducer as deviceReducer } from '../../reducers/device.reducer';
 import { reducer as profileReducer } from '../../reducers/profile.reducer';
 import { reducer as messageReducer } from '../../reducers/message.reducer';
-import { reducer as commandReducer } from '../../reducers/command.reducer';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -22,7 +21,6 @@ describe('ProfileComponent', () => {
       ],
       imports: [
         StoreModule.forRoot({
-          commands: commandReducer,
           devices: deviceReducer,
           messages: messageReducer,
           profiles: profileReducer

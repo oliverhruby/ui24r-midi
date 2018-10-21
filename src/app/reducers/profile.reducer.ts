@@ -3,21 +3,24 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as ProfileActions from './../actions/profile.actions';
 
 export interface ProfilesState extends EntityState<Profile> {
-  ids: number[];
-  selected: number;
+  ids: string[];
+  selected: string;
   editing: boolean;
-  entities: { [key: number]: Profile };
+  entities: { [key: string]: Profile };
 }
 
 export const adapter: EntityAdapter<Profile> = createEntityAdapter<Profile>();
 
 export const initialState: ProfilesState = adapter.getInitialState({
-  ids: [1, 2],
+  ids: [
+    '4f375c56-9a83-4660-92bd-15858a997a5a',
+    '13128653-06d7-4a94-8dd7-f55998fa8dba'
+  ],
   selected: null,
   editing: false,
   entities: {
-    1: {
-      Id: 1,
+    '4f375c56-9a83-4660-92bd-15858a997a5a': {
+      Id: '4f375c56-9a83-4660-92bd-15858a997a5a',
       Name: 'Yamaha CP33 -> Soundcraft Ui24R',
       // tslint:disable-next-line:max-line-length
       Description:
@@ -149,8 +152,8 @@ export const initialState: ProfilesState = adapter.getInitialState({
       Target: '192.168.0.174',
       Rules: []
     },
-    2: {
-      Id: 2,
+    '13128653-06d7-4a94-8dd7-f55998fa8dba': {
+      Id: '13128653-06d7-4a94-8dd7-f55998fa8dba',
       Name: 'Korg nanoControl -> Soundcraft Ui24R',
       // tslint:disable-next-line:max-line-length
       Description: 'Example mapping',
@@ -384,8 +387,19 @@ export function reducer(
   action: ProfileActions.Actions
 ): ProfilesState {
   switch (action.type) {
+    case ProfileActions.EDIT_PROFILE:
+      state.editing = !state.editing;
+      return state;
     case ProfileActions.ADD_PROFILE:
       return adapter.addOne(action.payload, state);
+    case ProfileActions.ADD_PROFILE_EVENT:
+      state.entities[action.payload.id].Events.push(action.payload.event);
+      return state;
+    case ProfileActions.DELETE_PROFILE_EVENT:
+      state.entities[action.payload.id].Events.filter(
+        item => item.Id === action.payload.eventId
+      );
+      return state;
     case ProfileActions.UPDATE_PROFILE:
       return adapter.updateOne(action.payload.profile, state);
     case ProfileActions.DELETE_PROFILE:
@@ -403,5 +417,4 @@ export const {
   selectEntities,
   selectIds,
   selectTotal
-
 } = adapter.getSelectors();

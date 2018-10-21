@@ -6,7 +6,6 @@ import { Subject } from 'rxjs/internal/Subject';
 import { Store } from '@ngrx/store';
 import * as MessageActions from './../actions/message.actions';
 import * as DeviceActions from './../actions/device.actions';
-import * as CommandActions from './../actions/command.actions';
 import { Message } from '../models/message.model';
 
 declare const navigator: any;
@@ -54,6 +53,7 @@ export class MidiService {
       // transform the message to an object
       .pipe(
         map((message: any) => ({
+          Date: new Date(),
           /* tslint:disable */
           Status: message.data[0] & 0xf0,
           /* tslint:enable */

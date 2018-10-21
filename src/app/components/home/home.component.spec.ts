@@ -15,7 +15,6 @@ import { HexPipe } from '../../pipes/hex.pipe';
 import { reducer as deviceReducer } from '../../reducers/device.reducer';
 import { reducer as profileReducer } from '../../reducers/profile.reducer';
 import { reducer as messageReducer } from '../../reducers/message.reducer';
-import { reducer as commandReducer } from '../../reducers/command.reducer';
 import { StoreModule } from '@ngrx/store';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -40,7 +39,6 @@ describe('HomeComponent', () => {
       ],
       imports: [
         StoreModule.forRoot({
-          commands: commandReducer,
           devices: deviceReducer,
           messages: messageReducer,
           profiles: profileReducer

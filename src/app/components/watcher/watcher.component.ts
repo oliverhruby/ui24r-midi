@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class WatcherComponent implements OnInit {
   messages$: Observable<Message[]>;
-  commands$: Observable<Command[]>;
+  events$: Observable<string[]>;
 
   constructor(
     private store: Store<AppState>
@@ -20,6 +20,6 @@ export class WatcherComponent implements OnInit {
 
   ngOnInit() {
     this.messages$ = this.store.pipe(select((state: AppState) => state.messages));
-    this.commands$ = this.store.pipe(select((state: AppState) => state.commands));
+    this.events$ = this.store.pipe(select((state: AppState) => state.connection.events));
   }
 }

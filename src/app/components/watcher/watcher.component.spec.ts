@@ -12,7 +12,6 @@ import { StoreModule } from '@ngrx/store';
 import { reducer as deviceReducer } from '../../reducers/device.reducer';
 import { reducer as profileReducer } from '../../reducers/profile.reducer';
 import { reducer as messageReducer } from '../../reducers/message.reducer';
-import { reducer as commandReducer } from '../../reducers/command.reducer';
 
 describe('WatcherComponent', () => {
   let component: WatcherComponent;
@@ -31,7 +30,6 @@ describe('WatcherComponent', () => {
       ],
       imports: [
         StoreModule.forRoot({
-          commands: commandReducer,
           devices: deviceReducer,
           messages: messageReducer,
           profiles: profileReducer

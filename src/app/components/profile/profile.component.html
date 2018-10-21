@@ -1,4 +1,4 @@
-<div *ngIf="profile">
+<div>
   <form novalidate [formGroup]="myForm">
     <div class="form-group">
       <label>{{"Name" | translate}}</label>
@@ -17,9 +17,9 @@
       <div>
         <div class="commands" *ngIf="profile">
           <div *ngFor="let event of profile.Events" class="command">
-            <span [innerHTML]="event.Name"></span><span class="parameter">{{event.Control}}</span>
+            <span [innerHTML]="event.Name"></span><span class="parameter">{{event.Control}}</span><input type="button" class="btn" value="-" (click)="deleteEvent(event.Id)">
           </div>
-          <input type="button" class="btn" value="+">
+          <input type="button" class="btn" value="+" (click)="addEvent()">
         </div>
         <div>{{"Commands" | translate}}:</div>
         <div class="commands" *ngIf="profile">

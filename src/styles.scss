@@ -20,18 +20,12 @@ body {
   padding: 0;
   height: 100%;
   background: #111111;
-}
-
-div,
-textarea,
-select {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 12px;
   color: chocolate;
 }
 
 .title {
-  background-color: #111111;
   padding: 3px;
   color: white;
   text-transform: uppercase;
@@ -40,26 +34,17 @@ select {
 
 input,
 textarea,
-select {
-  background-color: #111111;
-  padding: 3px;
+select,
+option
+{
+  background: #111111 !important;
   color: white;
-  font-size: 12px;
-  border-radius: 5px;
-  border: solid 1px #333333;
 }
 
 .widget {
   margin: 10px;
   padding: 10px;
-  background-color: black;
-}
-
-a {
-  color: #baaa9a;
-}
-a:hover {
-  color: white;
+  background: black;
 }
 
 ::-webkit-scrollbar {
