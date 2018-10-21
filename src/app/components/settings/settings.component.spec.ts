@@ -8,6 +8,7 @@ import { ProfileComponent } from '../profile/profile.component';
 import { reducer as deviceReducer } from '../../reducers/device.reducer';
 import { reducer as profileReducer } from '../../reducers/profile.reducer';
 import { reducer as messageReducer } from '../../reducers/message.reducer';
+import { reducer as connectionReducer } from '../../reducers/connection.reducer';
 import { StoreModule } from '@ngrx/store';
 
 // FontAwesome
@@ -32,7 +33,8 @@ describe('SettingsComponent', () => {
         StoreModule.forRoot({
           devices: deviceReducer,
           messages: messageReducer,
-          profiles: profileReducer
+          profiles: profileReducer,
+          connection: connectionReducer
         }),
         FormsModule,
         FontAwesomeModule,
