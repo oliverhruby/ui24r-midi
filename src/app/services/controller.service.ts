@@ -33,7 +33,7 @@ export class ControllerService {
         console.log('socket error');
       },
       () => {
-        console.log('connection closed');
+        this.store.dispatch(new ConnectionActions.Disconnected());
       }
     );
   }

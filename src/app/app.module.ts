@@ -19,8 +19,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 // FontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlay, faCaretSquareDown, faCaretSquareUp, faPlusSquare, faPowerOff } from '@fortawesome/free-solid-svg-icons';
-library.add(faPlay, faCaretSquareDown, faCaretSquareUp, faPlusSquare, faPowerOff);
+import { faPlay, faCaretSquareDown, faCaretSquareUp, faClock, faPlusSquare, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+library.add(faPlay, faCaretSquareDown, faCaretSquareUp, faClock, faPlusSquare, faPowerOff);
 
 // services
 import { ElectronService } from './services/electron.service';
@@ -41,6 +41,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 // pipes
 import { BinaryPipe } from './pipes/binary.pipe';
 import { HexPipe } from './pipes/hex.pipe';
+import { MessagePipe } from './pipes/message.pipe';
 
 // reducers
 import { reducer as deviceReducer } from './reducers/device.reducer';
@@ -68,7 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfileComponent,
     WebviewDirective,
     BinaryPipe,
-    HexPipe
+    HexPipe,
+    MessagePipe
   ],
   imports: [
     BrowserModule,

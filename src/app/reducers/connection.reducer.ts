@@ -23,6 +23,7 @@ export function reducer(
       state.connected = false;
       return state;
     case ConnectionActions.MESSAGE_RECEIVED:
+      state.connected = true;
       state.events.unshift(action.payload);
       if (state.events.length > 100) {
         state.events = state.events.slice(0, 100);
