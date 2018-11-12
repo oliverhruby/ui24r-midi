@@ -41,4 +41,4 @@ The user can configure the rules to transform.
 ## Donate
 If you want to support send me a beer, it keeps my mind relaxed and ideas will come :-)
 
-[![Support via PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/oliverhruby/)
+[![Support via PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/oliverhruby/) [![Greenkeeper badge](https://badges.greenkeeper.io/oliverhruby/ui24r-midi.svg)](https://greenkeeper.io/)
