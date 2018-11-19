@@ -14,6 +14,9 @@ export function reducer(
         state = state.slice(0, 100);
       }
       return state;
+    case MessageActions.CLEAR_MESSAGES:
+      state.length = 0;
+      return state;
     default:
       return state;
   }
