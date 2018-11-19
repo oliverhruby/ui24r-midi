@@ -2,7 +2,7 @@
   <div class="title">
     <fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Log: MIDI to Console" | translate}}
   </div>
-  <div><input type="checkbox">Time <input type="checkbox">Dec <input type="checkbox">Bin <input type="checkbox">Hex</div>
+  <div><input type="checkbox">Time <input type="checkbox">Dec <input type="checkbox">Bin <input type="checkbox">Hex<button (click)="clear()">Clear</button></div>
   <div class="message" *ngFor="let message of messages$ | async">
     <div class="midi_val">
       <div>

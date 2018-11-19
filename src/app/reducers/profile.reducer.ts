@@ -28,28 +28,8 @@ export const initialState: ProfilesState = adapter.getInitialState({
       Events: [
         {
           Id: 1,
-          Name: 'Note [x:integer] Pressed With Velocity [y:integer]',
-          Control: 48
-        },
-        {
-          Id: 2,
-          Name: 'Zone [x:integer] Volume [y:float]',
-          Control: 2
-        },
-        {
-          Id: 3,
-          Name: 'Modulation [y:float]',
-          Control: 3
-        },
-        {
-          Id: 4,
-          Name: 'Modulation [y:float]',
-          Control: 4
-        },
-        {
-          Id: 5,
-          Name: 'Pitch [y:float]',
-          Control: 5
+          Name: 'Zone 1 Fader',
+          Control: 7
         }
       ],
       Commands: [

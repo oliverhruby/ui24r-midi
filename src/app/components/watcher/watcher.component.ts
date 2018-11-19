@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { Message } from '../../models/message.model';
-import { Command } from '../../models/command.model';
+import * as MessageActions from '../../actions/message.actions';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,5 +21,9 @@ export class WatcherComponent implements OnInit {
   ngOnInit() {
     this.messages$ = this.store.pipe(select((state: AppState) => state.messages));
     this.events$ = this.store.pipe(select((state: AppState) => state.connection.events));
+  }
+
+  clear() {
+    this.store.dispatch(new MessageActions.Clear());
   }
 }
