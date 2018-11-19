@@ -6,6 +6,7 @@ import { ControllerService } from '../../services/controller.service';
 import { MidiService } from '../../services/midi.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BinaryPipe } from '../../pipes/binary.pipe';
+import { MessagePipe } from '../../pipes/message.pipe';
 import { HexPipe } from '../../pipes/hex.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
@@ -22,6 +23,7 @@ describe('WatcherComponent', () => {
       declarations: [
         BinaryPipe,
         HexPipe,
+        MessagePipe,
         WatcherComponent
       ],
       providers: [
