@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { Message } from '../../models/message.model';
 import * as MessageActions from '../../actions/message.actions';
+import * as WatcherActions from '../../actions/watcher.actions';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -25,5 +26,21 @@ export class WatcherComponent implements OnInit {
 
   clear() {
     this.store.dispatch(new MessageActions.Clear());
+  }
+
+  toggleHex() {
+    this.store.dispatch(new WatcherActions.ToggleHex());
+  }
+
+  toggleDec() {
+    this.store.dispatch(new WatcherActions.ToggleDec());
+  }
+
+  toggleBin() {
+    this.store.dispatch(new WatcherActions.ToggleBin());
+  }
+
+  toggleTime() {
+    this.store.dispatch(new WatcherActions.ToggleTime());
   }
 }

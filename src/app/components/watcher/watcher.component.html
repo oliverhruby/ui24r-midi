@@ -1,41 +1,49 @@
 <div class="widget" style="height:300px;overflow:auto">
   <div class="title">
-    <fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Log: MIDI to Console" | translate}}
+    <fa-icon [icon]="['fas', 'play']"></fa-icon>
+    {{ "Log: MIDI to Console" | translate }}
   </div>
-  <div><input type="checkbox">Time <input type="checkbox">Dec <input type="checkbox">Bin <input type="checkbox">Hex<button (click)="clear()">Clear</button></div>
-  <div class="message" *ngFor="let message of messages$ | async">
+  <div>
+    <input type="checkbox" (click)="toggleTime()" />Time 
+    <input type="checkbox" (click)="toggleHex()" />Hex
+    <input type="checkbox" (click)="toggleDec()" />Dec
+    <input type="checkbox" (click)="toggleBin()" />Bin 
+    <button (click)="clear()">Clear</button>
+  </div>
+  <div class="message" *ngFor="let message of (messages$ | async)">
     <div class="midi_val">
       <div>
-        <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{message.Date | date:"yyyy-MM-dd HH:mm:ss SSS"}}
+        <fa-icon [icon]="['fas', 'clock']"></fa-icon>{{ message.Date | date: "yyyy-MM-dd HH:mm:ss SSS" }}
       </div>
     </div>
     <div class="midi_val">
-      <div class="midi_dec">{{message.Status | number:'3.0-0'}}</div>
-      <div class="midi_hex">{{message.Status | hex}}</div>
-      <div class="midi_binary">{{message.Status | binary}}</div>
+      <div class="midi_dec">{{ message.Status | number: "3.0-0" }}</div>
+      <div class="midi_hex">{{ message.Status | hex }}</div>
+      <div class="midi_binary">{{ message.Status | binary }}</div>
     </div>
     <div class="midi_val">
-      <div class="midi_dec">{{message.Data1 | number:'3.0-0'}}</div>
-      <div class="midi_hex">{{message.Data1 | hex}}</div>
-      <div class="midi_binary">{{message.Data1 | binary}}</div>
+      <div class="midi_dec">{{ message.Data1 | number: "3.0-0" }}</div>
+      <div class="midi_hex">{{ message.Data1 | hex }}</div>
+      <div class="midi_binary">{{ message.Data1 | binary }}</div>
     </div>
     <div class="midi_val">
-      <div class="midi_dec">{{message.Data2 | number:'3.0-0'}}</div>
-      <div class="midi_hex">{{message.Data2 | hex}}</div>
-      <div class="midi_binary">{{message.Data2 | binary}}</div>
+      <div class="midi_dec">{{ message.Data2 | number: "3.0-0" }}</div>
+      <div class="midi_hex">{{ message.Data2 | hex }}</div>
+      <div class="midi_binary">{{ message.Data2 | binary }}</div>
     </div>
     <div class="midi_val">
-      <div class="midi_dec">{{message.Status | message}}</div>
+      <div class="midi_dec">{{ message.Status | message }}</div>
     </div>
   </div>
 </div>
 <div class="widget" style="height:300px;overflow:auto">
   <div class="title">
-    <fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Log: Console to MIDI" | translate}}
+    <fa-icon [icon]="['fas', 'play']"></fa-icon>
+    {{ "Log: Console to MIDI" | translate }}
   </div>
-  <div class="message" *ngFor="let event of events$ | async">
+  <div class="message" *ngFor="let event of (events$ | async)">
     <div class="midi_val">
-      <div class="midi_dec">{{event}}</div>
+      <div class="midi_dec">{{ event }}</div>
     </div>
   </div>
 </div>

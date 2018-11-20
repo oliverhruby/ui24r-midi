@@ -48,6 +48,7 @@ import { reducer as deviceReducer } from './reducers/device.reducer';
 import { reducer as profileReducer } from './reducers/profile.reducer';
 import { reducer as messageReducer } from './reducers/message.reducer';
 import { reducer as connectionReducer } from './reducers/connection.reducer';
+import { reducer as watcherReducer } from './reducers/watcher.reducer';
 
 // effects
 import { ConnectionEffects } from './effects/connection.effects';
@@ -83,7 +84,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       devices: deviceReducer,
       messages: messageReducer,
       profiles: profileReducer,
-      connection: connectionReducer
+      connection: connectionReducer,
+      watcher: watcherReducer
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
