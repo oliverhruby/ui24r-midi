@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { Message } from '../../models/message.model';
-import { Command } from '../../models/command.model';
+import * as MessageActions from '../../actions/message.actions';
+import * as WatcherActions from '../../actions/watcher.actions';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class WatcherComponent implements OnInit {
   messages$: Observable<Message[]>;
-  commands$: Observable<Command[]>;
+  events$: Observable<string[]>;
 
   constructor(
     private store: Store<AppState>
@@ -20,6 +21,26 @@ export class WatcherComponent implements OnInit {
 
   ngOnInit() {
     this.messages$ = this.store.pipe(select((state: AppState) => state.messages));
-    this.commands$ = this.store.pipe(select((state: AppState) => state.commands));
+    this.events$ = this.store.pipe(select((state: AppState) => state.connection.events));
+  }
+
+  clear() {
+    this.store.dispatch(new MessageActions.Clear());
+  }
+
+  toggleHex() {
+    this.store.dispatch(new WatcherActions.ToggleHex());
+  }
+
+  toggleDec() {
+    this.store.dispatch(new WatcherActions.ToggleDec());
+  }
+
+  toggleBin() {
+    this.store.dispatch(new WatcherActions.ToggleBin());
+  }
+
+  toggleTime() {
+    this.store.dispatch(new WatcherActions.ToggleTime());
   }
 }

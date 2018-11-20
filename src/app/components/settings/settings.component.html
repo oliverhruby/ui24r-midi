@@ -1,23 +1,25 @@
 <div>
   <div class="widget">
     <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Input" | translate}}</div>
-    {{"MIDI Input" | translate}}: <select class="form-conrol">
-      <option *ngFor="let device of inputDevices | async">
+    {{"MIDI Input" | translate}}: <select class="form-control">
+      <option *ngFor="let device of inputDevices$ | async">
         {{device.Name}}
       </option>
     </select>
   </div>
   <div class="widget">
     <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Profile" | translate}}</div>
-    <select [(ngModel)]="selectedValue" class="form-conrol" (change)="onChange(this)">
-      <option *ngFor="let profile of profiles | async" [ngValue]="profile">{{profile.Name}}</option>
+    <select [(ngModel)]="selectedValue" class="form-control" (change)="onChange(this)">
+      <option *ngFor="let profile of profiles$ | async" [ngValue]="profile">{{profile.Name}}</option>
     </select>
-    <app-profile [profile]="selectedValue"></app-profile>
+    <input type="button" class="btn" value="Edit" (click)="editProfile()">
+    <app-profile [profile]="selectedValue" [hidden]="!(profileState$ | async).editing"></app-profile>
   </div>
 </div>
 <div>
   <div class="widget">
     <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Output" | translate}}</div>
-    {{"URL" | translate}}: <input type="text" id="ip" class="font-control">
+    {{"URL" | translate}}: <input type="text" placeholder="host or IP of the mixer" id="ip" class="form-control" (change)="onChangeUrl($event)">
+    <fa-icon [icon]="['fas', 'power-off']" [ngClass]="{'connected': connection.connected }"></fa-icon>
   </div>
 </div>

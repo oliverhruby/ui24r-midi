@@ -6,13 +6,13 @@ import { ControllerService } from '../../services/controller.service';
 import { MidiService } from '../../services/midi.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BinaryPipe } from '../../pipes/binary.pipe';
+import { MessagePipe } from '../../pipes/message.pipe';
 import { HexPipe } from '../../pipes/hex.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
 import { reducer as deviceReducer } from '../../reducers/device.reducer';
 import { reducer as profileReducer } from '../../reducers/profile.reducer';
 import { reducer as messageReducer } from '../../reducers/message.reducer';
-import { reducer as commandReducer } from '../../reducers/command.reducer';
 
 describe('WatcherComponent', () => {
   let component: WatcherComponent;
@@ -23,6 +23,7 @@ describe('WatcherComponent', () => {
       declarations: [
         BinaryPipe,
         HexPipe,
+        MessagePipe,
         WatcherComponent
       ],
       providers: [
@@ -31,7 +32,6 @@ describe('WatcherComponent', () => {
       ],
       imports: [
         StoreModule.forRoot({
-          commands: commandReducer,
           devices: deviceReducer,
           messages: messageReducer,
           profiles: profileReducer

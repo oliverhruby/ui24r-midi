@@ -5,6 +5,7 @@ import { Message } from '../models/message.model';
  * All the constants to define our actions
  */
 export const ADD_MESSAGE = '[Messages] add message';
+export const CLEAR_MESSAGES = '[Messages] clear messages';
 
 /**
  * Implementation of all actions that we handle
@@ -15,4 +16,10 @@ export class Add implements Action {
   constructor(public payload: Message) {}
 }
 
-export type Actions = Add;
+export class Clear implements Action {
+  readonly type = CLEAR_MESSAGES;
+
+  constructor() {}
+}
+
+export type Actions = Add | Clear;

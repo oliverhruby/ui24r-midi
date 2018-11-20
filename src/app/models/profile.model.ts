@@ -8,7 +8,7 @@ import { Rule } from './rule.model';
 export interface Profile {
 
     /** Profile identifier */
-    Id: number;
+    Id: string;
 
     /** Name describing the profile */
     Name: string;

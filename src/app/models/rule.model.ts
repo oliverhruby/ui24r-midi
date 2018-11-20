@@ -2,6 +2,6 @@
  * Controller rule
  */
 export interface Rule {
-  EventId: number;
-  CommandId: number;
+  EventId: string;
+  CommandId: string;
 }

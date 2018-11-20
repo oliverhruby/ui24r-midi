@@ -65,4 +65,12 @@ export class ProfileComponent implements OnChanges, OnInit {
 
   }
 
+  addEvent() {
+    this.store.dispatch(new ProfileActions.AddProfileEvent({id: this.profile.Id, event: null}));
+  }
+
+  deleteEvent(id: number) {
+    this.store.dispatch(new ProfileActions.DeleteProfileEvent({id: this.profile.Id, eventId: id}));
+  }
+
 }

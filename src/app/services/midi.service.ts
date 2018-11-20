@@ -6,7 +6,6 @@ import { Subject } from 'rxjs/internal/Subject';
 import { Store } from '@ngrx/store';
 import * as MessageActions from './../actions/message.actions';
 import * as DeviceActions from './../actions/device.actions';
-import * as CommandActions from './../actions/command.actions';
 import { Message } from '../models/message.model';
 
 declare const navigator: any;
@@ -16,12 +15,9 @@ declare const navigator: any;
  */
 @Injectable()
 export class MidiService {
-  constructor(
-    private store: Store<AppState>,
-    private zone: NgZone
-  ) {
-      this.listenToStateChanges();
-      this.listenToMidiEvents();
+  constructor(private store: Store<AppState>, private zone: NgZone) {
+    this.listenToStateChanges();
+    this.listenToMidiEvents();
   }
 
   /**
@@ -29,12 +25,17 @@ export class MidiService {
    */
   private listenToStateChanges() {
     from(navigator.requestMIDIAccess())
-    .pipe(flatMap(access => this.stateChangeAsObservable(access)))
-    .pipe(filter((device: any) => device.port.type === 'input'))
+      .pipe(
+        flatMap(access => this.stateChangeAsObservable(access)),
+        filter((device: any) => device.port.type === 'input')
+      )
       .subscribe((access: any) => {
+        this.listenToMidiEvents();
         this.zone.run(() => {
           // console.log(access);
-          this.store.dispatch(new DeviceActions.Update([{ Name: access.port.name}]));
+          this.store.dispatch(
+            new DeviceActions.Update([{ Name: access.port.name }])
+          );
         });
       });
   }
@@ -45,24 +46,25 @@ export class MidiService {
   private listenToMidiEvents() {
     // navigator.requestMIDIAccess().then(data => console.log(data.inputs.values().next().value));
     from(navigator.requestMIDIAccess())
-      // get the first input device
-      .pipe(map((midi: any) => midi.inputs.values().next().value))
-      // stop if it's undefined
-      .pipe(filter(input => input !== undefined))
-      // convert the onmidimessage event to observable
-      .pipe(flatMap(input => this.midiMessageAsObservable(input)))
-      // transform the message to an object
       .pipe(
+        // get the first input device
+        map((midi: any) => midi.inputs.values().next().value),
+        // stop if it's undefined
+        filter(input => input !== undefined),
+        // convert the onmidimessage event to observable
+        flatMap(input => this.midiMessageAsObservable(input)),
+        // transform the message to an object
         map((message: any) => ({
+          Date: new Date(),
           /* tslint:disable */
           Status: message.data[0] & 0xf0,
           /* tslint:enable */
           Data1: message.data[1],
           Data2: message.data[2]
-        }))
+        })),
+        // ignore messages with empty data (for example clock signals)
+        filter((message: Message) => message.Data1 != null)
       )
-      // ignore messages with empty data (for example clock signals)
-      .pipe(filter((message: Message) => message.Data1 != null))
       .subscribe((message: Message) => {
         this.zone.run(() => {
           // console.log(message);

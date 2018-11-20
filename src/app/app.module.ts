@@ -19,13 +19,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 // FontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlay, faCaretSquareDown, faCaretSquareUp, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-library.add(faPlay, faCaretSquareDown, faCaretSquareUp, faPlusSquare);
+import { faPlay, faCaretSquareDown, faCaretSquareUp, faClock, faPlusSquare, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+library.add(faPlay, faCaretSquareDown, faCaretSquareUp, faClock, faPlusSquare, faPowerOff);
 
 // services
 import { ElectronService } from './services/electron.service';
-import { MidiService } from './services/midi.service';
 import { ControllerService } from './services/controller.service';
+import { MidiService } from './services/midi.service';
 
 // directives
 import { WebviewDirective } from './directives/webview.directive';
@@ -41,15 +41,19 @@ import { ProfileComponent } from './components/profile/profile.component';
 // pipes
 import { BinaryPipe } from './pipes/binary.pipe';
 import { HexPipe } from './pipes/hex.pipe';
+import { MessagePipe } from './pipes/message.pipe';
 
 // reducers
 import { reducer as deviceReducer } from './reducers/device.reducer';
 import { reducer as profileReducer } from './reducers/profile.reducer';
 import { reducer as messageReducer } from './reducers/message.reducer';
-import { reducer as commandReducer } from './reducers/command.reducer';
+import { reducer as connectionReducer } from './reducers/connection.reducer';
+import { reducer as watcherReducer } from './reducers/watcher.reducer';
 
 // effects
+import { ConnectionEffects } from './effects/connection.effects';
 import { ControllerEffects } from './effects/controller.effects';
+import { WebsocketService } from './services/websocket.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -66,7 +70,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfileComponent,
     WebviewDirective,
     BinaryPipe,
-    HexPipe
+    HexPipe,
+    MessagePipe
   ],
   imports: [
     BrowserModule,
@@ -76,16 +81,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({
-      commands: commandReducer,
       devices: deviceReducer,
       messages: messageReducer,
-      profiles: profileReducer
+      profiles: profileReducer,
+      connection: connectionReducer,
+      watcher: watcherReducer
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: AppConfig.production, // Restrict extension to log-only mode
     }),
     EffectsModule.forRoot([
+      ConnectionEffects,
       ControllerEffects
     ]),
     TranslateModule.forRoot({
@@ -99,7 +106,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     ElectronService,
     ControllerService,
-    MidiService
+    MidiService,
+    WebsocketService
   ],
   bootstrap: [AppComponent]
 })
