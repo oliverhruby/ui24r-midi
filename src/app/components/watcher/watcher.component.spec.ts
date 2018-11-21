@@ -13,6 +13,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducer as deviceReducer } from '../../reducers/device.reducer';
 import { reducer as profileReducer } from '../../reducers/profile.reducer';
 import { reducer as messageReducer } from '../../reducers/message.reducer';
+import { reducer as connectionReducer } from '../../reducers/connection.reducer';
+import { reducer as watcherReducer } from '../../reducers/watcher.reducer';
 
 describe('WatcherComponent', () => {
   let component: WatcherComponent;
@@ -34,7 +36,9 @@ describe('WatcherComponent', () => {
         StoreModule.forRoot({
           devices: deviceReducer,
           messages: messageReducer,
-          profiles: profileReducer
+          profiles: profileReducer,
+          connection: connectionReducer,
+          watcher: watcherReducer
         }),
         HttpClientModule,
         FontAwesomeModule,
