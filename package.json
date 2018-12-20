@@ -53,7 +53,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
     "@ngrx/effects": "^6.1.2",
-    "@ngrx/entity": "^6.1.2",
+    "@ngrx/entity": "^7.0.0",
     "@ngrx/store": "^6.1.2",
     "@ngrx/store-devtools": "^6.1.2",
     "@ngx-translate/core": "^11.0.1",
