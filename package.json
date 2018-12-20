@@ -55,7 +55,7 @@
     "@ngrx/effects": "^6.1.2",
     "@ngrx/entity": "^6.1.2",
     "@ngrx/store": "^6.1.2",
-    "@ngrx/store-devtools": "^6.1.2",
+    "@ngrx/store-devtools": "^7.0.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "angular2-uuid": "^1.1.1",
