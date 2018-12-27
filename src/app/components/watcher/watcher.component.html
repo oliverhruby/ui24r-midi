@@ -4,10 +4,9 @@
     {{ "Log: MIDI to Console" | translate }}
   </div>
   <div>
-    <input type="checkbox" (click)="toggleTime()" />Time 
-    <input type="checkbox" (click)="toggleHex()" />Hex
-    <input type="checkbox" (click)="toggleDec()" />Dec
-    <input type="checkbox" (click)="toggleBin()" />Bin 
+    <input type="checkbox" [checked]="(watcher$ | async).hex" (click)="toggleHex()" />Hex
+    <input type="checkbox" [checked]="(watcher$ | async).dec" (click)="toggleDec()" />Dec
+    <input type="checkbox" [checked]="(watcher$ | async).bin" (click)="toggleBin()" />Bin 
     <button (click)="clear()">Clear</button>
   </div>
   <div class="message" *ngFor="let message of (messages$ | async)">
@@ -17,19 +16,19 @@
       </div>
     </div>
     <div class="midi_val">
-      <div class="midi_dec">{{ message.Status | number: "3.0-0" }}</div>
-      <div class="midi_hex">{{ message.Status | hex }}</div>
-      <div class="midi_binary">{{ message.Status | binary }}</div>
+      <div class="midi_dec" *ngIf="(watcher$ | async).dec">{{ message.Status | number: "3.0-0" }}</div>
+      <div class="midi_hex" *ngIf="(watcher$ | async).hex">{{ message.Status | hex }}</div>
+      <div class="midi_bin" *ngIf="(watcher$ | async).bin">{{ message.Status | binary }}</div>
     </div>
     <div class="midi_val">
-      <div class="midi_dec">{{ message.Data1 | number: "3.0-0" }}</div>
-      <div class="midi_hex">{{ message.Data1 | hex }}</div>
-      <div class="midi_binary">{{ message.Data1 | binary }}</div>
+      <div class="midi_dec" *ngIf="(watcher$ | async).dec">{{ message.Data1 | number: "3.0-0" }}</div>
+      <div class="midi_hex" *ngIf="(watcher$ | async).hex">{{ message.Data1 | hex }}</div>
+      <div class="midi_bin" *ngIf="(watcher$ | async).bin">{{ message.Data1 | binary }}</div>
     </div>
     <div class="midi_val">
-      <div class="midi_dec">{{ message.Data2 | number: "3.0-0" }}</div>
-      <div class="midi_hex">{{ message.Data2 | hex }}</div>
-      <div class="midi_binary">{{ message.Data2 | binary }}</div>
+      <div class="midi_dec" *ngIf="(watcher$ | async).dec">{{ message.Data2 | number: "3.0-0" }}</div>
+      <div class="midi_hex" *ngIf="(watcher$ | async).hex">{{ message.Data2 | hex }}</div>
+      <div class="midi_bin" *ngIf="(watcher$ | async).bin">{{ message.Data2 | binary }}</div>
     </div>
     <div class="midi_val">
       <div class="midi_dec">{{ message.Status | message }}</div>

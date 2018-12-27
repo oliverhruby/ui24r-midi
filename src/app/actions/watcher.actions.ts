@@ -3,7 +3,6 @@ import { Action } from '@ngrx/store';
 export const TOGGLE_DEC = '[Watcher] toggle DEC';
 export const TOGGLE_BIN = '[Watcher] toggle BIN';
 export const TOGGLE_HEX = '[Watcher] toggle HEX';
-export const TOGGLE_TIME = '[Watcher] toggle Time';
 
 export class ToggleDec implements Action {
   readonly type = TOGGLE_DEC;
@@ -23,10 +22,4 @@ export class ToggleHex implements Action {
   constructor() {}
 }
 
-export class ToggleTime implements Action {
-  readonly type = TOGGLE_TIME;
-
-  constructor() {}
-}
-
-export type Actions = ToggleBin | ToggleDec | ToggleHex | ToggleTime;
+export type Actions = ToggleBin | ToggleDec | ToggleHex;

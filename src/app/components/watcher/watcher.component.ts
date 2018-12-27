@@ -5,6 +5,7 @@ import { Message } from '../../models/message.model';
 import * as MessageActions from '../../actions/message.actions';
 import * as WatcherActions from '../../actions/watcher.actions';
 import { Observable } from 'rxjs';
+import { WatcherState } from '../../reducers/watcher.reducer';
 
 @Component({
   selector: 'app-watcher',
@@ -14,6 +15,7 @@ import { Observable } from 'rxjs';
 export class WatcherComponent implements OnInit {
   messages$: Observable<Message[]>;
   events$: Observable<string[]>;
+  watcher$: Observable<WatcherState>;
 
   constructor(
     private store: Store<AppState>
@@ -22,6 +24,7 @@ export class WatcherComponent implements OnInit {
   ngOnInit() {
     this.messages$ = this.store.pipe(select((state: AppState) => state.messages));
     this.events$ = this.store.pipe(select((state: AppState) => state.connection.events));
+    this.watcher$ = this.store.pipe(select((state: AppState) => state.watcher));
   }
 
   clear() {
@@ -38,9 +41,5 @@ export class WatcherComponent implements OnInit {
 
   toggleBin() {
     this.store.dispatch(new WatcherActions.ToggleBin());
-  }
-
-  toggleTime() {
-    this.store.dispatch(new WatcherActions.ToggleTime());
   }
 }

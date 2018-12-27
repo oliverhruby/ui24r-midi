@@ -5,14 +5,12 @@ export interface WatcherState {
   dec: boolean;
   hex: boolean;
   bin: boolean;
-  time: boolean;
 }
 
 export const initialState: WatcherState = {
   dec: true,
   hex: true,
-  bin: true,
-  time: true
+  bin: true
 };
 
 export function reducer(
@@ -28,9 +26,6 @@ export function reducer(
       return state;
     case WatcherActions.TOGGLE_HEX:
       state.hex = !state.hex;
-      return state;
-    case WatcherActions.TOGGLE_TIME:
-      state.time = !state.time;
       return state;
     default:
       return state;
