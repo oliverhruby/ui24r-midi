@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Subject, Observable, Observer, timer, interval } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Subject, Observable, Observer, timer, interval } from "rxjs";
 
 @Injectable()
 export class WebsocketService {
@@ -10,7 +10,7 @@ export class WebsocketService {
   public connect(url): Subject<MessageEvent> {
     if (!this.subject) {
       this.subject = this.create(url);
-      console.log('Successfully connected: ' + url);
+      console.log("Successfully connected: " + url);
     }
     return this.subject;
   }
@@ -18,7 +18,7 @@ export class WebsocketService {
   private create(url): Subject<MessageEvent> {
     const ws = new WebSocket(url);
     interval(1000).subscribe(() => {
-      ws.send('ALIVE');
+      ws.send("ALIVE");
     });
 
     const observable = Observable.create((obs: Observer<MessageEvent>) => {

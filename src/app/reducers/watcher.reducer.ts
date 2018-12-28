@@ -1,5 +1,5 @@
-import { Profile } from '../models/profile.model';
-import * as WatcherActions from '../actions/watcher.actions';
+import { Profile } from "../models/profile.model";
+import * as WatcherActions from "../actions/watcher.actions";
 
 export interface WatcherState {
   dec: boolean;

@@ -1,32 +1,29 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
-import { AppState } from './../../app.state';
-import { Store } from '@ngrx/store' ;
-import { FormGroup, FormBuilder } from '@angular/forms';
-import * as ProfileActions from '../../actions/profile.actions';
-import { Profile } from '../../models/profile.model';
-import { Update } from '@ngrx/entity';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from "@angular/core";
+import { AppState } from "./../../app.state";
+import { Store } from "@ngrx/store";
+import { FormGroup, FormBuilder } from "@angular/forms";
+import * as ProfileActions from "../../actions/profile.actions";
+import { Profile } from "../../models/profile.model";
+import { Update } from "@ngrx/entity";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: "app-profile",
+  templateUrl: "./profile.component.html",
+  styleUrls: ["./profile.component.scss"]
 })
 export class ProfileComponent implements OnChanges, OnInit {
-
   myForm: FormGroup;
 
   @Input()
   profile: Profile;
 
-  constructor(private store: Store<AppState>, private fb: FormBuilder) {
-
-  }
+  constructor(private store: Store<AppState>, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      Name: '',
-      Description: '',
-      Target: ''
+      Name: "",
+      Description: "",
+      Target: ""
     });
   }
 
@@ -46,11 +43,13 @@ export class ProfileComponent implements OnChanges, OnInit {
       id: this.profile.Id,
       changes
     };
-    this.store.dispatch(new ProfileActions.UpdateProfile({profile}));
+    this.store.dispatch(new ProfileActions.UpdateProfile({ profile }));
   }
 
   delete() {
-    this.store.dispatch(new ProfileActions.DeleteProfile({ id: this.profile.Id }));
+    this.store.dispatch(
+      new ProfileActions.DeleteProfile({ id: this.profile.Id })
+    );
   }
 
   add() {
@@ -61,16 +60,20 @@ export class ProfileComponent implements OnChanges, OnInit {
     this.store.dispatch(new ProfileActions.AddProfile(this.profile));
   }
 
-  addCommand() {
-
-  }
+  addCommand() {}
 
   addEvent() {
-    this.store.dispatch(new ProfileActions.AddProfileEvent({id: this.profile.Id, event: null}));
+    this.store.dispatch(
+      new ProfileActions.AddProfileEvent({ id: this.profile.Id, event: null })
+    );
   }
 
   deleteEvent(id: number) {
-    this.store.dispatch(new ProfileActions.DeleteProfileEvent({id: this.profile.Id, eventId: id}));
+    this.store.dispatch(
+      new ProfileActions.DeleteProfileEvent({
+        id: this.profile.Id,
+        eventId: id
+      })
+    );
   }
-
 }

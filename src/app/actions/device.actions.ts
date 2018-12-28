@@ -1,16 +1,16 @@
-import { Action } from '@ngrx/store';
-import { Device } from '../models/device.model';
+import { Action } from "@ngrx/store";
+import { Device } from "../models/device.model";
 
 /**
  * All the constants to define our actions
  */
-export const UPDATE_DEVICES = '[Devices] update';
+export const UPDATE_DEVICES = "[Devices] update";
 
 /**
  * Implementation of all actions that we handle
  */
 export class Update implements Action {
-  readonly type = UPDATE_DEVICES;
+  public readonly type = UPDATE_DEVICES;
 
   constructor(public devices: Device[]) {}
 }

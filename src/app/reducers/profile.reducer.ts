@@ -1,6 +1,6 @@
-import { Profile } from './../models/profile.model';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import * as ProfileActions from './../actions/profile.actions';
+import { Profile } from "./../models/profile.model";
+import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
+import * as ProfileActions from "./../actions/profile.actions";
 
 export interface ProfilesState extends EntityState<Profile> {
   ids: string[];
@@ -11,352 +11,353 @@ export interface ProfilesState extends EntityState<Profile> {
 
 export const adapter: EntityAdapter<Profile> = createEntityAdapter<Profile>();
 
+// tslint:disable:no-duplicate-string
 export const initialState: ProfilesState = adapter.getInitialState({
   ids: [
-    '4f375c56-9a83-4660-92bd-15858a997a5a',
-    '13128653-06d7-4a94-8dd7-f55998fa8dba'
+    "4f375c56-9a83-4660-92bd-15858a997a5a",
+    "13128653-06d7-4a94-8dd7-f55998fa8dba"
   ],
   selected: null,
   editing: false,
   entities: {
-    '4f375c56-9a83-4660-92bd-15858a997a5a': {
-      Id: '4f375c56-9a83-4660-92bd-15858a997a5a',
-      Name: 'Yamaha CP33 -> Soundcraft Ui24R',
+    "4f375c56-9a83-4660-92bd-15858a997a5a": {
+      Id: "4f375c56-9a83-4660-92bd-15858a997a5a",
+      Name: "Yamaha CP33 -> Soundcraft Ui24R",
       // tslint:disable-next-line:max-line-length
       Description:
-        'CP33 is the only MIDI device I have and it can now control the mixer :-)',
+        "CP33 is the only MIDI device I have and it can now control the mixer :-)",
       Events: [
         {
           Id: 1,
-          Name: 'Zone 1 Fader',
+          Name: "Zone 1 Fader",
           Control: 7
         }
       ],
       Commands: [
         {
           Id: 1,
-          Name: 'Channel 1 Phantom',
-          Code: 'SETD^i.0.phantom^{x}'
+          Name: "Channel 1 Phantom",
+          Code: "SETD^i.0.phantom^{x}"
         },
         {
           Id: 2,
-          Name: 'Channel 1 Invert',
-          Code: 'SETD^afasfsfa'
+          Name: "Channel 1 Invert",
+          Code: "SETD^afasfsfa"
         },
         {
           Id: 3,
-          Name: 'Channel 1 Volume',
-          Code: 'SETD^i.0.mix^val{x}'
+          Name: "Channel 1 Volume",
+          Code: "SETD^i.0.mix^val{x}"
         },
         {
           Id: 4,
-          Name: 'Channel 1 Mute',
-          Code: 'SETD^i.0.mute^val{x}'
+          Name: "Channel 1 Mute",
+          Code: "SETD^i.0.mute^val{x}"
         },
         {
           Id: 5,
-          Name: 'Channel 1 Pan',
-          Code: 'SETD^i.0.pan^val{x}'
+          Name: "Channel 1 Pan",
+          Code: "SETD^i.0.pan^val{x}"
         },
         {
           Id: 6,
-          Name: 'Channel 1 Compressor Attack',
-          Code: 'SETD^i.0.dyn.attack^val{x}'
+          Name: "Channel 1 Compressor Attack",
+          Code: "SETD^i.0.dyn.attack^val{x}"
         },
         {
           Id: 7,
-          Name: 'Channel 1 Compressor Bypass',
-          Code: 'SETD^i.0.dyn.bypass^val{x}'
+          Name: "Channel 1 Compressor Bypass",
+          Code: "SETD^i.0.dyn.bypass^val{x}"
         },
         {
           Id: 8,
-          Name: 'Channel 1 Compressor Threshold',
-          Code: 'SETD^i.0.dyn.threshold^val{x}'
+          Name: "Channel 1 Compressor Threshold",
+          Code: "SETD^i.0.dyn.threshold^val{x}"
         },
         {
           Id: 9,
-          Name: 'Channel 1 Compressor Ratio',
-          Code: 'SETD^i.0.dyn.ratio^val{x}'
+          Name: "Channel 1 Compressor Ratio",
+          Code: "SETD^i.0.dyn.ratio^val{x}"
         },
         {
           Id: 10,
-          Name: 'Channel 1 Compressor Release',
-          Code: 'SETD^i.0.dyn.release^{x}'
+          Name: "Channel 1 Compressor Release",
+          Code: "SETD^i.0.dyn.release^{x}"
         },
         {
           Id: 11,
-          Name: 'Channel 1 Compressor Softknee',
-          Code: 'SETD^i.0.dyn.softknee^{x}'
+          Name: "Channel 1 Compressor Softknee",
+          Code: "SETD^i.0.dyn.softknee^{x}"
         },
         {
           Id: 12,
-          Name: 'Channel 1 Post',
-          Code: 'SETD^afasfsfa'
+          Name: "Channel 1 Post",
+          Code: "SETD^afasfsfa"
         },
         {
           Id: 13,
-          Name: 'Channel 1 Solo',
-          Code: 'SETD^i.0.solo^val{x}'
+          Name: "Channel 1 Solo",
+          Code: "SETD^i.0.solo^val{x}"
         },
         {
           Id: 14,
-          Name: 'Channel 1 Gain',
-          Code: 'SETD^i.0.gain^{x}'
+          Name: "Channel 1 Gain",
+          Code: "SETD^i.0.gain^{x}"
         },
         {
           Id: 15,
-          Name: 'Aux 1 Volume',
-          Code: 'SETD^afasfsfa'
+          Name: "Aux 1 Volume",
+          Code: "SETD^afasfsfa"
         },
         {
           Id: 16,
-          Name: 'Aux 1 Mute',
-          Code: 'SETD^afasfsfa'
+          Name: "Aux 1 Mute",
+          Code: "SETD^afasfsfa"
         },
         {
           Id: 17,
-          Name: 'Fx 1 Volume',
-          Code: 'SETD^afasfsfa'
+          Name: "Fx 1 Volume",
+          Code: "SETD^afasfsfa"
         },
         {
           Id: 18,
-          Name: 'Master Volume',
-          Code: 'SETD^afasfsfa'
+          Name: "Master Volume",
+          Code: "SETD^afasfsfa"
         },
         {
           Id: 19,
-          Name: 'Delay Tempo',
-          Code: 'SETD^i.0.aux.0.value^{x}'
+          Name: "Delay Tempo",
+          Code: "SETD^i.0.aux.0.value^{x}"
         }
       ],
-      Target: '192.168.0.174',
+      Target: "192.168.0.174",
       Rules: []
     },
-    '13128653-06d7-4a94-8dd7-f55998fa8dba': {
-      Id: '13128653-06d7-4a94-8dd7-f55998fa8dba',
-      Name: 'Korg nanoControl -> Soundcraft Ui24R',
+    "13128653-06d7-4a94-8dd7-f55998fa8dba": {
+      Id: "13128653-06d7-4a94-8dd7-f55998fa8dba",
+      Name: "Korg nanoControl -> Soundcraft Ui24R",
       // tslint:disable-next-line:max-line-length
-      Description: 'Example mapping',
+      Description: "Example mapping",
       Events: [
         {
           Id: 1,
-          Name: 'Channel 1 Volume',
+          Name: "Channel 1 Volume",
           Control: 0
         },
         {
           Id: 2,
-          Name: 'Channel 2 Volume',
+          Name: "Channel 2 Volume",
           Control: 1
         },
         {
           Id: 3,
-          Name: 'Channel 3 Volume',
+          Name: "Channel 3 Volume",
           Control: 2
         },
         {
           Id: 4,
-          Name: 'Channel 4 Volume',
+          Name: "Channel 4 Volume",
           Control: 3
         },
         {
           Id: 5,
-          Name: 'CHannel 5 Volume',
+          Name: "CHannel 5 Volume",
           Control: 4
         },
         {
           Id: 6,
-          Name: 'Channel 6 Volume',
+          Name: "Channel 6 Volume",
           Control: 5
         },
         {
           Id: 7,
-          Name: 'Channel 7 Volume',
+          Name: "Channel 7 Volume",
           Control: 6
         },
         {
           Id: 8,
-          Name: 'Channel 8 Volume',
+          Name: "Channel 8 Volume",
           Control: 7
         },
         {
           Id: 9,
-          Name: 'Channel 1 Gain',
+          Name: "Channel 1 Gain",
           Control: 8
         },
         {
           Id: 10,
-          Name: 'Channel 2 Gain',
+          Name: "Channel 2 Gain",
           Control: 9
         },
         {
           Id: 11,
-          Name: 'Channel 3 Gain',
+          Name: "Channel 3 Gain",
           Control: 10
         },
         {
           Id: 12,
-          Name: 'Channel 4 Gain',
+          Name: "Channel 4 Gain",
           Control: 11
         },
         {
           Id: 13,
-          Name: 'Channel 5 Kno5',
+          Name: "Channel 5 Kno5",
           Control: 12
         },
         {
           Id: 14,
-          Name: 'Channel 6 Gain',
+          Name: "Channel 6 Gain",
           Control: 13
         },
         {
           Id: 15,
-          Name: 'Channel 7 Gain',
+          Name: "Channel 7 Gain",
           Control: 14
         },
         {
           Id: 16,
-          Name: 'Channel 8 Gain',
+          Name: "Channel 8 Gain",
           Control: 15
         },
         {
           Id: 17,
-          Name: 'Channel 1 Solo',
+          Name: "Channel 1 Solo",
           Control: 16
         },
         {
           Id: 18,
-          Name: 'Channel 2 Solo',
+          Name: "Channel 2 Solo",
           Control: 17
         },
         {
           Id: 19,
-          Name: 'Channel 3 Solo',
+          Name: "Channel 3 Solo",
           Control: 18
         },
         {
           Id: 20,
-          Name: 'Channel 4 Solo',
+          Name: "Channel 4 Solo",
           Control: 19
         },
         {
           Id: 21,
-          Name: 'Channel 5 Solo',
+          Name: "Channel 5 Solo",
           Control: 20
         },
         {
           Id: 22,
-          Name: 'Channel 6 Solo',
+          Name: "Channel 6 Solo",
           Control: 21
         },
         {
           Id: 23,
-          Name: 'Channel 7 Solo',
+          Name: "Channel 7 Solo",
           Control: 22
         },
         {
           Id: 24,
-          Name: 'Channel 8 Solo',
+          Name: "Channel 8 Solo",
           Control: 23
         },
         {
           Id: 25,
-          Name: 'Channel 1 Mute',
+          Name: "Channel 1 Mute",
           Control: 24
         },
         {
           Id: 26,
-          Name: 'Channel 2 Mute',
+          Name: "Channel 2 Mute",
           Control: 25
         },
         {
           Id: 27,
-          Name: 'Channel 3 Mute',
+          Name: "Channel 3 Mute",
           Control: 26
         },
         {
           Id: 28,
-          Name: 'Channel 4 Mute',
+          Name: "Channel 4 Mute",
           Control: 27
         },
         {
           Id: 29,
-          Name: 'Channel 5 Mute',
+          Name: "Channel 5 Mute",
           Control: 28
         },
         {
           Id: 30,
-          Name: 'Channel 6 Mute',
+          Name: "Channel 6 Mute",
           Control: 29
         },
         {
           Id: 31,
-          Name: 'Channel 7 Mute',
+          Name: "Channel 7 Mute",
           Control: 30
         },
         {
           Id: 32,
-          Name: 'Channel 8 Mute',
+          Name: "Channel 8 Mute",
           Control: 31
         },
         {
           Id: 33,
-          Name: 'Channel 1 Record',
+          Name: "Channel 1 Record",
           Control: 32
         },
         {
           Id: 34,
-          Name: 'Channel 2 Record',
+          Name: "Channel 2 Record",
           Control: 33
         },
         {
           Id: 35,
-          Name: 'Channel 3 Record',
+          Name: "Channel 3 Record",
           Control: 34
         },
         {
           Id: 36,
-          Name: 'Channel 4 Record',
+          Name: "Channel 4 Record",
           Control: 35
         },
         {
           Id: 37,
-          Name: 'Channel 5 Record',
+          Name: "Channel 5 Record",
           Control: 36
         },
         {
           Id: 38,
-          Name: 'Channel 6 Record',
+          Name: "Channel 6 Record",
           Control: 37
         },
         {
           Id: 39,
-          Name: 'Channel 7 Record',
+          Name: "Channel 7 Record",
           Control: 38
         },
         {
           Id: 40,
-          Name: 'Channel 8 Record',
+          Name: "Channel 8 Record",
           Control: 39
         },
         {
           Id: 41,
-          Name: 'Track <',
+          Name: "Track <",
           Control: 40
         },
         {
           Id: 42,
-          Name: 'Track >',
+          Name: "Track >",
           Control: 41
         }
       ],
       Commands: [
         {
           Id: 1,
-          Name: 'Channel [x:integer] Phantom [y:bool]',
-          Code: 'SETD^afasfsfa'
+          Name: "Channel [x:integer] Phantom [y:bool]",
+          Code: "SETD^afasfsfa"
         }
       ],
-      Target: '192.168.0.174',
+      Target: "192.168.0.174",
       Rules: []
     }
   }
@@ -376,9 +377,8 @@ export function reducer(
       state.entities[action.payload.id].Events.push(action.payload.event);
       return state;
     case ProfileActions.DELETE_PROFILE_EVENT:
-      state.entities[action.payload.id].Events.filter(
-        item => item.Id === action.payload.eventId
-      );
+      state.entities[action.payload.id].Events =
+        state.entities[action.payload.id].Events.filter(item => item.Id === action.payload.eventId);
       return state;
     case ProfileActions.UPDATE_PROFILE:
       return adapter.updateOne(action.payload.profile, state);

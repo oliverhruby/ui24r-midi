@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { select, Store } from '@ngrx/store';
-import { Profile } from '../../models/profile.model';
-import { AppState } from '../../app.state';
-import { Device } from '../../models/device.model';
-import * as ProfileActions from '../../actions/profile.actions';
-import * as ConnectionReducer from '../../reducers/connection.reducer';
-import * as ProfileReducer from '../../reducers/profile.reducer';
+import { Component, OnInit } from "@angular/core";
+import { Observable } from "rxjs";
+import { select, Store } from "@ngrx/store";
+import { Profile } from "../../models/profile.model";
+import { AppState } from "../../app.state";
+import { Device } from "../../models/device.model";
+import * as ProfileActions from "../../actions/profile.actions";
+import * as ConnectionReducer from "../../reducers/connection.reducer";
+import * as ProfileReducer from "../../reducers/profile.reducer";
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  selector: "app-settings",
+  templateUrl: "./settings.component.html",
+  styleUrls: ["./settings.component.scss"]
 })
 export class SettingsComponent implements OnInit {
   selectedValue: Profile;
@@ -21,11 +21,11 @@ export class SettingsComponent implements OnInit {
   connection: ConnectionReducer.ConnectionState;
 
   constructor(private store: Store<AppState>) {
-    this.profileState$ = this.store.select('profiles');
+    this.profileState$ = this.store.select("profiles");
     this.profiles$ = this.profileState$.pipe(select(ProfileReducer.selectAll));
-    this.inputDevices$ = this.store.select('devices');
+    this.inputDevices$ = this.store.select("devices");
 
-    this.store.select('connection').subscribe(x => this.connection = x);
+    this.store.select("connection").subscribe(x => (this.connection = x));
   }
 
   ngOnInit() {}

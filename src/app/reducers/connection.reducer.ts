@@ -1,4 +1,4 @@
-import * as ConnectionActions from './../actions/connection.actions';
+import * as ConnectionActions from "./../actions/connection.actions";
 
 export interface ConnectionState {
   connected: boolean;

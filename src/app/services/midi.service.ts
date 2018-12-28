@@ -1,12 +1,12 @@
-import { Injectable, NgZone } from '@angular/core';
-import { AppState } from './../app.state';
-import { from } from 'rxjs/internal/observable/from';
-import { map, filter, flatMap } from 'rxjs/operators';
-import { Subject } from 'rxjs/internal/Subject';
-import { Store } from '@ngrx/store';
-import * as MessageActions from './../actions/message.actions';
-import * as DeviceActions from './../actions/device.actions';
-import { Message } from '../models/message.model';
+import { Injectable, NgZone } from "@angular/core";
+import { AppState } from "./../app.state";
+import { from } from "rxjs/internal/observable/from";
+import { map, filter, flatMap } from "rxjs/operators";
+import { Subject } from "rxjs/internal/Subject";
+import { Store } from "@ngrx/store";
+import * as MessageActions from "./../actions/message.actions";
+import * as DeviceActions from "./../actions/device.actions";
+import { Message } from "../models/message.model";
 
 declare const navigator: any;
 
@@ -27,12 +27,11 @@ export class MidiService {
     from(navigator.requestMIDIAccess())
       .pipe(
         flatMap(access => this.stateChangeAsObservable(access)),
-        filter((device: any) => device.port.type === 'input')
+        filter((device: any) => device.port.type === "input")
       )
       .subscribe((access: any) => {
         this.listenToMidiEvents();
         this.zone.run(() => {
-          // console.log(access);
           this.store.dispatch(
             new DeviceActions.Update([{ Name: access.port.name }])
           );
@@ -44,7 +43,6 @@ export class MidiService {
    * Listen to MIDI events and update store
    */
   private listenToMidiEvents() {
-    // navigator.requestMIDIAccess().then(data => console.log(data.inputs.values().next().value));
     from(navigator.requestMIDIAccess())
       .pipe(
         // get the first input device
@@ -67,7 +65,6 @@ export class MidiService {
       )
       .subscribe((message: Message) => {
         this.zone.run(() => {
-          // console.log(message);
           this.store.dispatch(new MessageActions.Add(message));
         });
       });
