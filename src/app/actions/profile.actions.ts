@@ -1,17 +1,24 @@
 import { Update } from "@ngrx/entity";
 import { Action } from "@ngrx/store";
-import { InputEvent } from "../models/inputevent.model";
 import { Profile } from "../models/profile.model";
+import { Rule } from "../models/rule.model";
 
+export const LOAD_PROFILES = "[Profiles] load";
 export const ADD_PROFILE = "[Profiles] add profile";
-export const ADD_PROFILE_EVENT = "[Profiles] add profile event";
-export const DELETE_PROFILE_EVENT = "[Profiles] delete profile event";
+export const ADD_PROFILE_RULE = "[Profiles] add profile rule";
+export const DELETE_PROFILE_RULE = "[Profiles] delete profile rule";
 export const EDIT_PROFILE = "[Profiles] edit profile";
 export const SELECT_PROFILE = "[Profiles] select profile";
 export const UPDATE_PROFILE = "[Profiles] update profile";
 export const DELETE_PROFILE = "[Profiles] delete profile";
 
 // tslint:disable:max-classes-per-file
+
+export class LoadProfiles implements Action {
+  public readonly type = LOAD_PROFILES;
+
+  constructor(public payload: any) {}
+}
 
 export class AddProfile implements Action {
   public readonly type = ADD_PROFILE;
@@ -37,16 +44,16 @@ export class UpdateProfile implements Action {
   constructor(public payload: { profile: Update<Profile> }) {}
 }
 
-export class AddProfileEvent implements Action {
-  public readonly type = ADD_PROFILE_EVENT;
+export class AddProfileRule implements Action {
+  public readonly type = ADD_PROFILE_RULE;
 
-  constructor(public payload: { id: string; event: InputEvent }) {}
+  constructor(public payload: { id: string; rule: Rule }) {}
 }
 
-export class DeleteProfileEvent implements Action {
-  public readonly type = DELETE_PROFILE_EVENT;
+export class DeleteProfileRule implements Action {
+  public readonly type = DELETE_PROFILE_RULE;
 
-  constructor(public payload: { id: string; eventId: number }) {}
+  constructor(public payload: { id: string; ruleId: string }) {}
 }
 
 export class DeleteProfile implements Action {
@@ -56,10 +63,11 @@ export class DeleteProfile implements Action {
 }
 
 export type Actions =
+  | LoadProfiles
   | AddProfile
   | UpdateProfile
   | DeleteProfile
   | EditProfile
   | SelectProfile
-  | AddProfileEvent
-  | DeleteProfileEvent;
+  | AddProfileRule
+  | DeleteProfileRule;

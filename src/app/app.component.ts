@@ -25,5 +25,7 @@ export class AppComponent {
     } else {
       console.log("Mode web");
     }
+
+    midiService.getDevices();
   }
 }

@@ -1,42 +1,98 @@
 <div>
   <form novalidate [formGroup]="myForm">
     <div class="form-group">
-      <label>{{"Name" | translate}}</label>
-      <input type="text" formControlName="Name" class="form-control">
+      <label>{{ "Name" | translate }}</label>
+      <input type="text" formControlName="Name" class="form-control" />
     </div>
     <div class="form-group">
-      <label>{{"Description" | translate}}</label>
+      <label>{{ "Description" | translate }}</label>
       <textarea formControlName="Description" class="form-control"></textarea>
     </div>
     <div class="form-group">
-      <label>{{"Target" | translate}}</label>
-      <input type="text" formControlName="Target" class="form-control">
+      <label>{{ "Target" | translate }}</label>
+      <input type="text" formControlName="Target" class="form-control" />
     </div>
     <div class="form-group">
-      <div class="param">{{"Events" | translate}}:</div>
+      <div class="param">{{ "Rules" | translate }}:</div>
       <div>
         <div class="commands" *ngIf="profile">
-          <div *ngFor="let event of profile.Events" class="command">
-            {{event.Name}}<span class="parameter">{{event.Control}}</span>
-            <input type="button" class="btn" value="-" (click)="deleteEvent(event.Id)">
+          <div *ngFor="let rule of profile.Rules" class="command">
+            <form>
+              <div class="form-row">
+                <input value="{{ rule.Name }}" class="form-control" />
+              </div>
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      [checked]="rule.Active"
+                    />
+                    <label class="form-check-label">
+                      {{ "Active" | translate }}
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      [checked]="rule.StopProcessing"
+                    />
+                    <label class="form-check-label">
+                      {{ "Stop Processing" | translate }}
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group col">
+                  <label>{{ "Type" | translate }}:</label>
+                  <select class="form-control">
+                    <option value="MIDIIn">MIDI In</option>
+                    <option value="Ui24R">Ui24R Event</option>
+                  </select>
+                  <select class="form-control">
+                    <option value="NoteOn">Note On</option>
+                    <option value="ControlChange">Control Change</option>
+                  </select>
+                </div>
+                <div class="form-group col">
+                  <label>{{ "Control" | translate }}:</label>
+                  <input value="{{ rule.Control }}" class="form-control" />
+                </div>
+                <div class="form-group col">
+                  <label>{{ "Command" | translate }}:</label>
+                  <select>
+                    <option value="Ui24R">Ui24R Command</option>
+                    <option value="MIDI">MIDI Out</option>
+                  </select>
+                  <input value="{{ rule.Command }}" class="form-control" />
+                </div>
+              </div>
+              <input
+                type="button"
+                class="btn"
+                value="-"
+                (click)="deleteRule(rule.Id)"
+              />
+            </form>
           </div>
-          <input type="button" class="btn" value="+" (click)="addEvent()">
-        </div>
-        <div>{{"Commands" | translate}}:</div>
-        <div class="commands" *ngIf="profile">
-          <div *ngFor="let command of profile.Commands" class="command">
-            {{command.Name}}
-            <fa-icon [icon]="['fas', 'plus-square']"></fa-icon> <span class="parameter">{{command.Code}}</span>
-          </div>
-          <input type="button" class="btn btn-outline-primary" value="+" (click)="addCommand()">
+          <input type="button" class="btn" value="+" (click)="addRule()" />
         </div>
       </div>
     </div>
   </form>
 </div>
 <div class="btn-group" role="group">
-  <button class="btn btn-outline-primary" (click)="save()">{{"Save" | translate}}</button>
-  <button class="btn btn-outline-primary" (click)="delete()">{{"Delete" | translate}}</button>
-  <button class="btn btn-outline-primary" (click)="copy()">{{"Copy" | translate}}</button>
-  <button class="btn btn-outline-primary" (click)="add()">{{"Add" | translate}}</button>
+  <button class="btn btn-outline-primary" (click)="save()">
+    {{ "Save" | translate }}
+  </button>
+  <button class="btn btn-outline-primary" (click)="delete()">
+    {{ "Delete" | translate }}
+  </button>
+  <button class="btn btn-outline-primary" (click)="copy()">
+    {{ "Copy" | translate }}
+  </button>
+  <button class="btn btn-outline-primary" (click)="add()">
+    {{ "Add" | translate }}
+  </button>
 </div>

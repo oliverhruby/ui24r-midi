@@ -22,6 +22,7 @@ import {
   faPlusSquare,
   faPowerOff
 } from "@fortawesome/free-solid-svg-icons";
+import { HttpClientModule } from "@angular/common/http";
 library.add(
   faPlay,
   faCaretSquareDown,
@@ -48,6 +49,7 @@ describe("SettingsComponent", () => {
         }),
         FormsModule,
         FontAwesomeModule,
+        HttpClientModule,
         ReactiveFormsModule,
         TranslateModule.forRoot()
       ]
@@ -62,5 +64,9 @@ describe("SettingsComponent", () => {
 
   it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should edit", () => {
+    component.editProfile();
   });
 });

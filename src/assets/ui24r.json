@@ -1,0 +1,99 @@
+{
+  "Commands": [
+    {
+      "Id": 1,
+      "Name": "Channel 1 Phantom",
+      "Code": "SETD^i.0.phantom^{x}"
+    },
+    {
+      "Id": 2,
+      "Name": "Channel 1 Invert",
+      "Code": "SETD^afasfsfa"
+    },
+    {
+      "Id": 3,
+      "Name": "Channel 1 Volume",
+      "Code": "SETD^i.0.mix^val{x}"
+    },
+    {
+      "Id": 4,
+      "Name": "Channel 1 Mute",
+      "Code": "SETD^i.0.mute^val{x}"
+    },
+    {
+      "Id": 5,
+      "Name": "Channel 1 Pan",
+      "Code": "SETD^i.0.pan^val{x}"
+    },
+    {
+      "Id": 6,
+      "Name": "Channel 1 Compressor Attack",
+      "Code": "SETD^i.0.dyn.attack^val{x}"
+    },
+    {
+      "Id": 7,
+      "Name": "Channel 1 Compressor Bypass",
+      "Code": "SETD^i.0.dyn.bypass^val{x}"
+    },
+    {
+      "Id": 8,
+      "Name": "Channel 1 Compressor Threshold",
+      "Code": "SETD^i.0.dyn.threshold^val{x}"
+    },
+    {
+      "Id": 9,
+      "Name": "Channel 1 Compressor Ratio",
+      "Code": "SETD^i.0.dyn.ratio^val{x}"
+    },
+    {
+      "Id": 10,
+      "Name": "Channel 1 Compressor Release",
+      "Code": "SETD^i.0.dyn.release^{x}"
+    },
+    {
+      "Id": 11,
+      "Name": "Channel 1 Compressor Softknee",
+      "Code": "SETD^i.0.dyn.softknee^{x}"
+    },
+    {
+      "Id": 12,
+      "Name": "Channel 1 Post",
+      "Code": "SETD^afasfsfa"
+    },
+    {
+      "Id": 13,
+      "Name": "Channel 1 Solo",
+      "Code": "SETD^i.0.solo^val{x}"
+    },
+    {
+      "Id": 14,
+      "Name": "Channel 1 Gain",
+      "Code": "SETD^i.0.gain^{x}"
+    },
+    {
+      "Id": 15,
+      "Name": "Aux 1 Volume",
+      "Code": "SETD^afasfsfa"
+    },
+    {
+      "Id": 16,
+      "Name": "Aux 1 Mute",
+      "Code": "SETD^afasfsfa"
+    },
+    {
+      "Id": 17,
+      "Name": "Fx 1 Volume",
+      "Code": "SETD^afasfsfa"
+    },
+    {
+      "Id": 18,
+      "Name": "Master Volume",
+      "Code": "SETD^afasfsfa"
+    },
+    {
+      "Id": 19,
+      "Name": "Delay Tempo",
+      "Code": "SETD^i.0.aux.0.value^{x}"
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 <div class="widget" style="height:300px;overflow:auto">
   <div class="title">
     <fa-icon [icon]="['fas', 'play']"></fa-icon>
-    {{ "Log: MIDI to Console" | translate }}
+    {{ "LOG: Input" | translate }}
   </div>
   <div>
     <input type="checkbox" [checked]="(watcher$ | async).hex" (click)="toggleHex()" />Hex
     <input type="checkbox" [checked]="(watcher$ | async).dec" (click)="toggleDec()" />Dec
     <input type="checkbox" [checked]="(watcher$ | async).bin" (click)="toggleBin()" />Bin 
-    <button (click)="clear()">Clear</button>
+    <button class="btn btn-outline-primary" (click)="clear()">Clear</button>
   </div>
   <div class="message" *ngFor="let message of (messages$ | async)">
     <div class="midi_val">
@@ -16,18 +16,18 @@
       </div>
     </div>
     <div class="midi_val">
-      <div class="midi_dec" *ngIf="(watcher$ | async).dec">{{ message.Status | number: "3.0-0" }}</div>
       <div class="midi_hex" *ngIf="(watcher$ | async).hex">{{ message.Status | hex }}</div>
+      <div class="midi_dec" *ngIf="(watcher$ | async).dec">{{ message.Status | number: "3.0-0" }}</div>
       <div class="midi_bin" *ngIf="(watcher$ | async).bin">{{ message.Status | binary }}</div>
     </div>
     <div class="midi_val">
-      <div class="midi_dec" *ngIf="(watcher$ | async).dec">{{ message.Data1 | number: "3.0-0" }}</div>
       <div class="midi_hex" *ngIf="(watcher$ | async).hex">{{ message.Data1 | hex }}</div>
+      <div class="midi_dec" *ngIf="(watcher$ | async).dec">{{ message.Data1 | number: "3.0-0" }}</div>
       <div class="midi_bin" *ngIf="(watcher$ | async).bin">{{ message.Data1 | binary }}</div>
     </div>
     <div class="midi_val">
-      <div class="midi_dec" *ngIf="(watcher$ | async).dec">{{ message.Data2 | number: "3.0-0" }}</div>
       <div class="midi_hex" *ngIf="(watcher$ | async).hex">{{ message.Data2 | hex }}</div>
+      <div class="midi_dec" *ngIf="(watcher$ | async).dec">{{ message.Data2 | number: "3.0-0" }}</div>
       <div class="midi_bin" *ngIf="(watcher$ | async).bin">{{ message.Data2 | binary }}</div>
     </div>
     <div class="midi_val">
@@ -38,7 +38,7 @@
 <div class="widget" style="height:300px;overflow:auto">
   <div class="title">
     <fa-icon [icon]="['fas', 'play']"></fa-icon>
-    {{ "Log: Console to MIDI" | translate }}
+    {{ "LOG: Output" | translate }}
   </div>
   <div class="message" *ngFor="let event of (events$ | async)">
     <div class="midi_val">

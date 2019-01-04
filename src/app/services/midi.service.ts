@@ -7,6 +7,7 @@ import { Store } from "@ngrx/store";
 import * as MessageActions from "./../actions/message.actions";
 import * as DeviceActions from "./../actions/device.actions";
 import { Message } from "../models/message.model";
+import { Device } from "../models/device.model";
 
 declare const navigator: any;
 
@@ -15,26 +16,32 @@ declare const navigator: any;
  */
 @Injectable()
 export class MidiService {
-  constructor(private store: Store<AppState>, private zone: NgZone) {
-    this.listenToStateChanges();
-    this.listenToMidiEvents();
+  constructor(private store: Store<AppState>, private zone: NgZone) {}
+
+  /**
+   * Listen to state changes in connected devices and update store
+   */
+  public getDevices() {
+    navigator.requestMIDIAccess().then(midi => {
+      const devices: Device[] = [];
+      for (const input of <any[]>Array.from(midi.inputs.values())) {
+        devices.push(<Device>{ Name: input.name });
+      }
+      this.zone.run(() => {
+        this.store.dispatch(new DeviceActions.Update(devices));
+      });
+    });
   }
 
   /**
    * Listen to state changes in connected devices and update store
    */
-  private listenToStateChanges() {
+  public listenToStateChanges() {
     from(navigator.requestMIDIAccess())
-      .pipe(
-        flatMap(access => this.stateChangeAsObservable(access)),
-        filter((device: any) => device.port.type === "input")
-      )
-      .subscribe((access: any) => {
-        this.listenToMidiEvents();
+      .pipe(flatMap(access => this.stateChangeAsObservable(access)))
+      .subscribe((inputs: Device[]) => {
         this.zone.run(() => {
-          this.store.dispatch(
-            new DeviceActions.Update([{ Name: access.port.name }])
-          );
+          this.store.dispatch(new DeviceActions.Update(inputs));
         });
       });
   }
@@ -42,13 +49,15 @@ export class MidiService {
   /**
    * Listen to MIDI events and update store
    */
-  private listenToMidiEvents() {
+  public listenToDevice(deviceName: string) {
     from(navigator.requestMIDIAccess())
       .pipe(
         // get the first input device
-        map((midi: any) => midi.inputs.values().next().value),
-        // stop if it's undefined
-        filter(input => input !== undefined),
+        map((midi: any) =>
+          Array.from(midi.inputs.values()).find(
+            (a: any) => a.name === deviceName
+          )
+        ),
         // convert the onmidimessage event to observable
         flatMap(input => this.midiMessageAsObservable(input)),
         // transform the message to an object
@@ -71,8 +80,13 @@ export class MidiService {
   }
 
   private stateChangeAsObservable(midi) {
+    console.log(midi);
     const source = new Subject();
-    midi.onstatechange = event => source.next(event);
+    const devices: Device[] = [];
+    for (const input of <any[]>Array.from(midi.inputs.values())) {
+      devices.push(<Device>{ Name: input.name });
+    }
+    midi.onstatechange = () => source.next(devices);
     return source.asObservable();
   }
 

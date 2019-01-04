@@ -1,0 +1,363 @@
+{
+  "4f375c56-9a83-4660-92bd-15858a997a5a": {
+    "Id": "4f375c56-9a83-4660-92bd-15858a997a5a",
+    "Name": "Yamaha CP33 -> Soundcraft Ui24R",
+    "Description": "CP33 is the only MIDI device I have and it can now control the mixer :-)",
+    "Rules": [
+      {
+        "Id": "3ccd919c-d8fa-4f44-9f04-781447b9c9d3",
+        "Name": "CP33 Zone 1 Fader -> Ui24R Master Fader",
+        "Control": 7,
+        "Active": true,
+        "StopProcessing": false,
+        "Formula": "(1 / 127) * {x}",
+        "Command": "3:::SETD^i.0.mix^{y}"
+      }
+    ],
+    "Target": "192.168.0.174"
+  },
+  "13128653-06d7-4a94-8dd7-f55998fa8dba": {
+    "Id": "13128653-06d7-4a94-8dd7-f55998fa8dba",
+    "Name": "Korg nanoControl -> Soundcraft Ui24R",
+    "Description": "Example mapping",
+    "Rules": [
+      {
+        "Id": "d5eeceea-7c50-4ad6-a260-fdefa904e07d",
+        "Name": "Channel 1 Volume",
+        "Control": 0,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "ed42bbec-1ddb-4850-a655-3b95e8a2b18d",
+        "Name": "Channel 2 Volume",
+        "Control": 1,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "ce850506-fe22-4103-a203-b286b2ebb1c8",
+        "Name": "Channel 3 Volume",
+        "Control": 2,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "61477981-9259-4dd3-bbb2-6e17fb0ce958",
+        "Name": "Channel 4 Volume",
+        "Control": 3,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "51d34b0e-2247-4435-98f4-5204ce5df73c",
+        "Name": "Channel 5 Volume",
+        "Control": 4,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "6a0ecd9f-b95e-45d7-a155-fc18a682b8d2",
+        "Name": "Channel 6 Volume",
+        "Control": 5,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "97c56e08-2115-4d2c-a32b-99b4113f999d",
+        "Name": "Channel 7 Volume",
+        "Control": 6,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "c4b1c19c-f029-4b3c-92af-23d5e678c04f",
+        "Name": "Channel 8 Volume",
+        "Control": 7,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "80589c57-bba8-4db7-8b78-b33864354576",
+        "Name": "Channel 1 Gain",
+        "Control": 8,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "b8fe09cf-096a-4b6e-8996-ad14d553b832",
+        "Name": "Channel 2 Gain",
+        "Control": 9,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "94c35ce7-8db1-4337-89a3-6b540a6b894c",
+        "Name": "Channel 3 Gain",
+        "Control": 10,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "f6439937-d43e-44d9-a40c-a043267020ee",
+        "Name": "Channel 4 Gain",
+        "Control": 11,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "c495c552-34da-4f15-b266-d9499ce58156",
+        "Name": "Channel 5 Kno5",
+        "Control": 12,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "a90b063d-9dfd-4313-af8a-f78821a20cdc",
+        "Name": "Channel 6 Gain",
+        "Control": 13,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "016ddb69-51e1-46bc-9543-bc277b96c43a",
+        "Name": "Channel 7 Gain",
+        "Control": 14,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "ded6f486-79b3-4250-8115-c8fbef5b152d",
+        "Name": "Channel 8 Gain",
+        "Control": 15,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "6ffea314-02a8-46b8-adfc-dae3c927022d",
+        "Name": "Channel 1 Solo",
+        "Control": 16,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "ff260d99-367d-483d-a434-6ed42737e806",
+        "Name": "Channel 2 Solo",
+        "Control": 17,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "5b7dd92d-016d-4b8d-912e-52bede7fb258",
+        "Name": "Channel 3 Solo",
+        "Control": 18,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "3cb620fa-7784-46d1-bef1-6731bba8cf07",
+        "Name": "Channel 4 Solo",
+        "Control": 19,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "62442f8e-2b46-4279-8471-6f80e90143af",
+        "Name": "Channel 5 Solo",
+        "Control": 20,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "c04d5d8d-7a39-4223-a4ad-d30bda0d3947",
+        "Name": "Channel 6 Solo",
+        "Control": 21,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "a9a48b01-8afc-4467-a722-62ef6da6fc17",
+        "Name": "Channel 7 Solo",
+        "Control": 22,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "3b2c1051-18f7-453c-87e7-c2f61ae296a8",
+        "Name": "Channel 8 Solo",
+        "Control": 23,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "eeb9210a-d6e4-4739-a8d0-8dfbe6298999",
+        "Name": "Channel 1 Mute",
+        "Control": 24,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "6f737684-2163-467e-a393-c3f6ef31f6eb",
+        "Name": "Channel 2 Mute",
+        "Control": 25,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "05e9e803-f4e5-4434-9481-e4db9258dafb",
+        "Name": "Channel 3 Mute",
+        "Control": 26,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "d614428c-8ea4-4900-9a5f-4899a7f25f71",
+        "Name": "Channel 4 Mute",
+        "Control": 27,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "e8647213-6edb-44e8-b811-9956d3c6de11",
+        "Name": "Channel 5 Mute",
+        "Control": 28,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "d09ed0f5-e6c6-4c2f-87df-ddbaef90aeea",
+        "Name": "Channel 6 Mute",
+        "Control": 29,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "dda1b209-283d-4d3b-97f2-bfca79bbde9e",
+        "Name": "Channel 7 Mute",
+        "Control": 30,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "f74ae32e-f730-49ff-a4b3-bf8a6d36a993",
+        "Name": "Channel 8 Mute",
+        "Control": 31,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "e573f3d8-19b8-43c4-83a4-191e9dd099c7",
+        "Name": "Channel 1 Record",
+        "Control": 32,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "a24f811d-31ff-4db8-981d-737c149bd0ed",
+        "Name": "Channel 2 Record",
+        "Control": 33,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "1adb4a41-42bc-4bd0-a1e6-08689e4af3ed",
+        "Name": "Channel 3 Record",
+        "Control": 34,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "5c8d95ed-4734-4ac2-bfde-d083c44f4f8d",
+        "Name": "Channel 4 Record",
+        "Control": 35,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "a4ebd3cb-6177-4158-877c-1bbb7b3b7394",
+        "Name": "Channel 5 Record",
+        "Control": 36,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "a849169d-73d9-4a0f-b83c-72fb3e94cc29",
+        "Name": "Channel 6 Record",
+        "Control": 37,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "44b0cab1-a258-4f2d-b63b-ba330847a0dc",
+        "Name": "Channel 7 Record",
+        "Control": 38,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "ea320a55-f7b1-4592-a2c1-6815d9bf9eaa",
+        "Name": "Channel 8 Record",
+        "Control": 39,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "55355d60-aa8c-48dd-8420-eb26ba949704",
+        "Name": "Track <",
+        "Control": 40,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      },
+      {
+        "Id": "156c9e94-0efb-4c7d-aadf-73fd6048907b",
+        "Name": "Track >",
+        "Control": 41,
+        "Active": true,
+        "StopProcessing": false,
+        "Command": ""
+      }
+    ],
+    "Target": "192.168.0.174"
+  }
+}

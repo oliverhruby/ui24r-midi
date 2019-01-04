@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { AppState } from "../app.state";
-import { Store, select } from "@ngrx/store";
+import { Store } from "@ngrx/store";
 import * as ConnectionActions from "./../actions/connection.actions";
 import { Profile } from "../models/profile.model";
 import { Message } from "../models/message.model";
@@ -24,9 +24,7 @@ export class ControllerService {
     private httpClient: HttpClient,
     private websocketService: WebsocketService
   ) {
-    this.profileState$ = this.store.select("profiles");
-    this.profiles$ = this.profileState$.pipe(select(ProfileReducer.selectAll));
-    this.profiles$.subscribe(data => (this.profile = data[0]));
+    this.store.select("profiles").subscribe(data => console.log(data));
 
     this.subject = websocketService.connect("ws://192.168.0.175");
     this.subject.subscribe(
@@ -48,10 +46,14 @@ export class ControllerService {
    */
   translate(message: Message) {
     if (this.profile) {
-      this.profile.Events.forEach(event => {
-        if (message.Data1 === event.Control) {
-          // TODO: proper logic !!!
-          const data = "3:::SETD^i.0.mix^" + (1 / 127) * message.Data2;
+      this.profile.Rules.forEach(rule => {
+        if (message.Data1 === rule.Control) {
+          console.log("Rule valid!");
+          // tslint:disable-next-line:no-eval
+          const val = eval(
+            rule.Formula.replace("{x}", message.Data2.toString())
+          );
+          const data = rule.Command.replace("{y}", val);
           this.store.dispatch(new ConnectionActions.MessageSent(data));
           this.subject.next(<any>data);
         }

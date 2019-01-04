@@ -1,10 +1,17 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  SimpleChanges,
+  OnChanges
+} from "@angular/core";
 import { AppState } from "./../../app.state";
 import { Store } from "@ngrx/store";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import * as ProfileActions from "../../actions/profile.actions";
 import { Profile } from "../../models/profile.model";
 import { Update } from "@ngrx/entity";
+import { UUID } from "angular2-uuid";
 
 @Component({
   selector: "app-profile",
@@ -62,17 +69,26 @@ export class ProfileComponent implements OnChanges, OnInit {
 
   addCommand() {}
 
-  addEvent() {
+  addRule() {
     this.store.dispatch(
-      new ProfileActions.AddProfileEvent({ id: this.profile.Id, event: null })
+      new ProfileActions.AddProfileRule({
+        id: this.profile.Id,
+        rule: {
+          Id: UUID.UUID(),
+          Name: "",
+          Control: null,
+          Active: true,
+          StopProcessing: false
+        }
+      })
     );
   }
 
-  deleteEvent(id: number) {
+  deleteRule(id: string) {
     this.store.dispatch(
-      new ProfileActions.DeleteProfileEvent({
+      new ProfileActions.DeleteProfileRule({
         id: this.profile.Id,
-        eventId: id
+        ruleId: id
       })
     );
   }

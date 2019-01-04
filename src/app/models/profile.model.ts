@@ -1,5 +1,3 @@
-import { Command } from "./command.model";
-import { InputEvent } from "./inputevent.model";
 import { Rule } from "./rule.model";
 
 /**
@@ -15,15 +13,9 @@ export interface Profile {
   /** Some details about the profile */
   Description: string;
 
-  /** Events to listen to on the source device */
-  Events: InputEvent[];
-
-  /** commands to be sent to target device */
-  Commands: Command[];
-
-  /** target device URL  */
-  Target: string;
-
-  /** transformation rules  */
+  /** Rules defining the controller logic */
   Rules: Rule[];
+
+  /** Target device URL  */
+  Target: string;
 }
