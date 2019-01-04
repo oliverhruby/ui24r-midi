@@ -29,26 +29,27 @@ export function reducer(
   switch (action.type) {
     case ProfileActions.LOAD_PROFILES:
       state.entities = action.payload;
-      return state;
+      return { ...state };
     case ProfileActions.EDIT_PROFILE:
       state.editing = !state.editing;
-      return state;
+      return { ...state };
     case ProfileActions.ADD_PROFILE:
       return adapter.addOne(action.payload, state);
     case ProfileActions.ADD_PROFILE_RULE:
       state.entities[action.payload.id].Rules.push(action.payload.rule);
-      return state;
+      return { ...state };
     case ProfileActions.DELETE_PROFILE_RULE:
-      state.entities[action.payload.id].Rules =
-        state.entities[action.payload.id].Rules.filter(item => item.Id !== action.payload.ruleId);
-      return state;
+      state.entities[action.payload.id].Rules = state.entities[
+        action.payload.id
+      ].Rules.filter(item => item.Id !== action.payload.ruleId);
+      return { ...state };
     case ProfileActions.UPDATE_PROFILE:
       return adapter.updateOne(action.payload.profile, state);
     case ProfileActions.DELETE_PROFILE:
       return adapter.removeOne(action.payload.id, state);
     case ProfileActions.SELECT_PROFILE:
       state.selected = action.payload.Id;
-      return state;
+      return { ...state };
     default:
       return state;
   }
