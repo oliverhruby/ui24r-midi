@@ -1,7 +1,7 @@
 <div>
   <div class="widget">
     <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Input" | translate}}</div>
-    {{"MIDI Input" | translate}}: <select [(ngModel)]="selectedValue" class="form-control" (change)="listenTo(this)">
+    {{"MIDI Input" | translate}}: <select [(ngModel)]="selectedInput" class="form-control" (change)="listenTo(this)">
       <option *ngFor="let device of inputDevices$ | async" [ngValue]="device">
         {{device.Name}}
       </option>
@@ -9,7 +9,7 @@
   </div>
   <div class="widget">
     <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Profile" | translate}}</div>
-    <select [(ngModel)]="selectedValue" class="form-control" (change)="onChange(this)">
+    <select [(ngModel)]="selectedProfile" class="form-control" (change)="onChange(this)">
       <option *ngFor="let profile of profiles$ | async" [ngValue]="profile">{{profile.Name}}</option>
     </select>
     <input type="button" class="btn" value="Edit" (click)="editProfile()">

@@ -17,7 +17,8 @@ import { MidiService } from "../../services/midi.service";
   styleUrls: ["./settings.component.scss"]
 })
 export class SettingsComponent implements OnInit {
-  selectedValue: Profile;
+  selectedProfile: Profile;
+  selectedInput: Device;
   profileState$: Observable<ProfileReducer.ProfilesState>;
   profiles$: Observable<Profile[]>;
   inputDevices$: Observable<Device[]>;
@@ -48,16 +49,16 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {}
 
   onChange(e) {
-    this.store.dispatch(new ProfileActions.SelectProfile(e.selectedValue));
+    this.store.dispatch(new ProfileActions.SelectProfile(e.selectedProfile));
   }
 
   listenTo(e) {
-    const device = e.selectedValue;
+    const device = e.selectedInput;
     this.midi.listenToDevice(device.Name);
     this.store.dispatch(new DeviceActions.ListenTo(device.Name));
   }
 
   editProfile() {
-    this.store.dispatch(new ProfileActions.EditProfile(this.selectedValue));
+    this.store.dispatch(new ProfileActions.EditProfile(this.selectedProfile));
   }
 }

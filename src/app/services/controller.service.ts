@@ -24,7 +24,9 @@ export class ControllerService {
     private httpClient: HttpClient,
     private websocketService: WebsocketService
   ) {
-    this.store.select("profiles").subscribe(data => console.log(data));
+    this.store.select("profiles").subscribe(
+      data => this.profile = data.entities ? data.entities[data.selected] : null
+    );
 
     this.subject = websocketService.connect("ws://192.168.0.175");
     this.subject.subscribe(
