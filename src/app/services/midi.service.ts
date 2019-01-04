@@ -12,20 +12,20 @@ import { Device } from "../models/device.model";
 declare const navigator: any;
 
 /**
- * Provides access to the MIDI device using observables
+ * Provides access to MIDI devices
  */
 @Injectable()
 export class MidiService {
   constructor(private store: Store<AppState>, private zone: NgZone) {}
 
   /**
-   * Listen to state changes in connected devices and update store
+   * Retrieve connected MIDI devices and update the store
    */
   public getDevices() {
     navigator.requestMIDIAccess().then(midi => {
       const devices: Device[] = [];
-      for (const input of <any[]>Array.from(midi.inputs.values())) {
-        devices.push(<Device>{ Name: input.name });
+      for (const input of Array.from(midi.inputs.values())) {
+        devices.push(<Device>{ Name: (<any>input).name });
       }
       this.zone.run(() => {
         this.store.dispatch(new DeviceActions.Update(devices));
@@ -83,8 +83,8 @@ export class MidiService {
     console.log(midi);
     const source = new Subject();
     const devices: Device[] = [];
-    for (const input of <any[]>Array.from(midi.inputs.values())) {
-      devices.push(<Device>{ Name: input.name });
+    for (const input of Array.from(midi.inputs.values())) {
+      devices.push(<Device>{ Name: (<any>input).name });
     }
     midi.onstatechange = () => source.next(devices);
     return source.asObservable();

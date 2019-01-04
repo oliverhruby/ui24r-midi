@@ -19,7 +19,7 @@
 <div>
   <div class="widget">
     <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Output" | translate}}</div>
-    {{"URL" | translate}}: <input type="text" placeholder="host or IP of the mixer" id="ip" class="form-control" (change)="onChangeUrl($event)">
+    {{"URL" | translate}}: <input type="text" placeholder="host or IP of the mixer" id="ip" class="form-control">
     <fa-icon [icon]="['fas', 'power-off']" [ngClass]="{'connected': connection.connected }"></fa-icon>
   </div>
 </div>
