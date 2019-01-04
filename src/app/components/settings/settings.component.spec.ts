@@ -62,8 +62,8 @@ describe("SettingsComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
+  it("should get profiles", () => {
+    component.getProfiles();
   });
 
   it("should edit", () => {
