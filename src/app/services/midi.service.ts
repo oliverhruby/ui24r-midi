@@ -36,7 +36,7 @@ export class MidiService {
   /**
    * Listen to state changes in connected devices and update store
    */
-  public listenToStateChanges() {
+  public ConnectStateChanges() {
     from(navigator.requestMIDIAccess())
       .pipe(
         flatMap((midiAccess: WebMidi.MIDIAccess) =>
@@ -53,7 +53,7 @@ export class MidiService {
   /**
    * Listen to MIDI events and update store
    */
-  public listenToDevice(deviceName: string) {
+  public ConnectDevice(deviceName: string) {
     from(navigator.requestMIDIAccess())
       .pipe(
         // get the first input device

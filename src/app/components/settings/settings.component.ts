@@ -52,10 +52,9 @@ export class SettingsComponent implements OnInit {
     this.store.dispatch(new ProfileActions.SelectProfile(e.selectedProfile));
   }
 
-  listenTo(e) {
+  connect(e) {
     const device = e.selectedInput;
-    this.midi.listenToDevice(device.Name);
-    this.store.dispatch(new DeviceActions.ListenTo(device.Name));
+    this.store.dispatch(new DeviceActions.Connect(device.Name));
   }
 
   editProfile() {

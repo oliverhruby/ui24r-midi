@@ -4,22 +4,29 @@ import { Device } from "../models/device.model";
 /**
  * All the constants to define our actions
  */
-export const UPDATE_DEVICES = "[Devices] update device";
-export const LISTEN_TO_DEVICE = "[Devices] listen to device";
+export const UPDATE = "[Devices] update";
+export const CONNECT = "[Devices] connect";
+export const DISCONNECT = "[Devices] disconnect";
 
 /**
  * Implementation of all actions that we handle
  */
 export class Update implements Action {
-  public readonly type = UPDATE_DEVICES;
+  public readonly type = UPDATE;
 
   constructor(public devices: Device[]) {}
 }
 
-export class ListenTo implements Action {
-  public readonly type = LISTEN_TO_DEVICE;
+export class Connect implements Action {
+  public readonly type = CONNECT;
 
   constructor(public deviceName: string) {}
 }
 
-export type Actions = Update | ListenTo;
+export class Disconnect implements Action {
+  public readonly type = DISCONNECT;
+
+  constructor(public deviceName: string) {}
+}
+
+export type Actions = Update | Connect | Disconnect;

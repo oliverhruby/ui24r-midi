@@ -1,7 +1,7 @@
 <div>
   <div class="widget">
     <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Input" | translate}}</div>
-    {{"MIDI Input" | translate}}: <select [(ngModel)]="selectedInput" class="form-control" (change)="listenTo(this)">
+    {{"MIDI Input" | translate}}: <select [(ngModel)]="selectedInput" class="form-control" (change)="connect(this)">
       <option *ngFor="let device of inputDevices$ | async" [ngValue]="device">
         {{device.Name}}
       </option>

@@ -8,9 +8,9 @@ export interface WatcherState {
 }
 
 export const initialState: WatcherState = {
-  dec: true,
   hex: true,
-  bin: true
+  dec: false,
+  bin: false
 };
 
 export function reducer(
