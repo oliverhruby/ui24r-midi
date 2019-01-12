@@ -1,11 +1,9 @@
 <div>
   <div class="widget">
     <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Input" | translate}}</div>
-    {{"MIDI Input" | translate}}: <select [(ngModel)]="selectedInput" class="form-control" (change)="connect(this)">
-      <option *ngFor="let device of inputDevices$ | async" [ngValue]="device">
-        {{device.Name}}
-      </option>
-    </select>
+    <div *ngFor="let device of inputDevices$ | async">
+      <input type="checkbox" (click)="connect(device.Name)" [checked]="device.Listening" /> {{device.Name}}
+    </div>
   </div>
   <div class="widget">
     <div class="title"><fa-icon [icon]="['fas', 'play']"></fa-icon> {{"Profile" | translate}}</div>

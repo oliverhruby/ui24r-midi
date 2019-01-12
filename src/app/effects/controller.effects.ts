@@ -6,6 +6,12 @@ import { ControllerService } from "../services/controller.service";
 
 @Injectable()
 export class ControllerEffects {
+
+  constructor(
+    private actions$: Actions,
+    private controllerService: ControllerService
+  ) {}
+
   /**
    * Listen to incoming MIDI messages and trigger the processing
    * of the controller rules for the selected profile
@@ -16,8 +22,4 @@ export class ControllerEffects {
     tap(data => this.controllerService.translate(data.payload))
   );
 
-  constructor(
-    private actions$: Actions,
-    private controllerService: ControllerService
-  ) {}
 }

@@ -7,17 +7,18 @@ import { MidiService } from "../services/midi.service";
 @Injectable()
 export class DeviceEffects {
 
-  /**
-   * When connecting to a device we need to subscribe to the Web MIDI events
-   */
-  @Effect({ dispatch: false })
-  firstAction$ = this.actions$.pipe(
-    ofType<DeviceActions.Connect>(DeviceActions.CONNECT),
-    tap(data => this.midiService.ConnectDevice(data.deviceName))
-  );
-
   constructor(
     private actions$: Actions,
     private midiService: MidiService
   ) {}
+
+  /**
+   * When connecting to a device we need to subscribe to the Web MIDI events
+   */
+  @Effect({ dispatch: false })
+  deviceConnecting$ = this.actions$.pipe(
+    ofType<DeviceActions.Connect>(DeviceActions.CONNECT),
+    tap(data => this.midiService.ConnectDevice(data.deviceName))
+  );
+
 }
