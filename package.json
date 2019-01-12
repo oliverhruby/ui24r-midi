@@ -63,7 +63,7 @@
     "jquery": "^3.3.1",
     "popper.js": "^1.14.6",
     "rxjs": "^6.3.3",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.27"
   },
   "devDependencies": {
     "@types/jasmine": "^3.3.5",
@@ -89,7 +89,7 @@
     "prettier-tslint": "^0.4.2",
     "protractor": "^5.4.2",
     "ts-node": "^7.0.1",
-    "tslint": "^5.12.0",
+    "tslint": "^5.12.1",
     "tslint-sonarts": "^1.8.0",
     "typescript": "^3.1.6",
     "wait-on": "^3.2.0",

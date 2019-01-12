@@ -13,7 +13,7 @@
       <option *ngFor="let profile of profiles$ | async" [ngValue]="profile">{{profile.Name}}</option>
     </select>
     <input type="button" class="btn" value="Edit" (click)="editProfile()">
-    <app-profile [profile]="selectedValue" [hidden]="!(profileState$ | async).editing"></app-profile>
+    <app-profile [profile]="selectedProfile" [hidden]="!(profileState$ | async).editing"></app-profile>
   </div>
 </div>
 <div>
