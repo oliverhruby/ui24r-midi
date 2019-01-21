@@ -9,7 +9,6 @@ import * as ProfileActions from "../../actions/profile.actions";
 import * as ConnectionReducer from "../../reducers/connection.reducer";
 import * as ProfileReducer from "../../reducers/profile.reducer";
 import { HttpClient } from "@angular/common/http";
-import { MidiService } from "../../services/midi.service";
 
 @Component({
   selector: "app-settings",
@@ -18,14 +17,12 @@ import { MidiService } from "../../services/midi.service";
 })
 export class SettingsComponent implements OnInit {
   selectedProfile: Profile;
-  selectedInput: Device;
   profileState$: Observable<ProfileReducer.ProfilesState>;
   profiles$: Observable<Profile[]>;
   inputDevices$: Observable<Device[]>;
   connection: ConnectionReducer.ConnectionState;
 
   constructor(
-    private midi: MidiService,
     private store: Store<AppState>,
     private http: HttpClient
   ) {}
@@ -44,10 +41,8 @@ export class SettingsComponent implements OnInit {
     this.store.dispatch(new ProfileActions.SelectProfile(e.selectedProfile));
   }
 
-  listenTo(e) {
-    const device = e.selectedInput;
-    this.midi.listenToDevice(device.Name);
-    this.store.dispatch(new DeviceActions.ListenTo(device.Name));
+  connect(deviceName: string) {
+    this.store.dispatch(new DeviceActions.Connect(deviceName));
   }
 
   editProfile() {

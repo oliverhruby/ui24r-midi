@@ -16,9 +16,7 @@
       </div>
     </div>
     <div class="midi_val">
-      <div class="midi_hex" *ngIf="(watcher$ | async).hex">{{ message.Status | hex }}</div>
-      <div class="midi_dec" *ngIf="(watcher$ | async).dec">{{ message.Status | number: "3.0-0" }}</div>
-      <div class="midi_bin" *ngIf="(watcher$ | async).bin">{{ message.Status | binary }}</div>
+      <div>{{ message.Channel }}</div>
     </div>
     <div class="midi_val">
       <div class="midi_hex" *ngIf="(watcher$ | async).hex">{{ message.Data1 | hex }}</div>

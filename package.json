@@ -37,11 +37,7 @@
     "e2e": "npm run postinstall:web && ng e2e"
   },
   "dependencies": {
-    "@angular-devkit/build-angular": "^0.12.2",
-    "@angular/cli": "^7.2.2",
     "@angular/common": "^7.2.1",
-    "@angular/compiler": "^7.2.1",
-    "@angular/compiler-cli": "^7.2.1",
     "@angular/core": "^7.2.1",
     "@angular/forms": "^7.2.1",
     "@angular/http": "^7.2.1",
@@ -66,6 +62,10 @@
     "zone.js": "^0.8.28"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^0.12.2",
+    "@angular/cli": "^7.2.2",
+    "@angular/compiler": "^7.2.1",
+    "@angular/compiler-cli": "^7.2.1",
     "@types/jasmine": "^3.3.7",
     "@types/jasminewd2": "^2.0.6",
     "@types/node": "^10.12.18",
@@ -85,12 +85,12 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "npm-run-all": "^4.1.5",
     "npx": "10.2.0",
-    "prettier": "^1.15.3",
+    "prettier": "^1.16.0",
     "prettier-tslint": "^0.4.2",
     "protractor": "^5.4.2",
     "ts-node": "^7.0.1",
     "tslint": "^5.12.1",
-    "tslint-sonarts": "^1.8.0",
+    "tslint-sonarts": "^1.9.0",
     "typescript": "^3.1.6",
     "wait-on": "^3.2.0",
     "webdriver-manager": "^12.1.1"

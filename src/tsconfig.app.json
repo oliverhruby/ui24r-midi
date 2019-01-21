@@ -4,12 +4,8 @@
     "outDir": "../out-tsc/app",
     "module": "es2015",
     "baseUrl": "",
-    "types": []
+    "types": ["webmidi"]
   },
-  "exclude": [
-    "**/*.spec.ts"
-  ],
-  "types": [
-    "webmidi"
-  ]
+  "exclude": ["**/*.spec.ts"],
+  "types": []
 }

@@ -40,15 +40,14 @@ function createWindow() {
     win = null;
   });
 
-  // TODO: fix automatic install for DEV only
-  // installExtension(REDUX_DEVTOOLS)
-  //   .then(name => {
-  //     console.log(`Added extension: ${name}`);
-  //     win.webContents.openDevTools();
-  //   })
-  //   .catch(err => {
-  //     console.log("An error occured", err);
-  //   });
+  installExtension(REDUX_DEVTOOLS)
+    .then(name => {
+      console.log(`Added extension: ${name}`);
+      win.webContents.openDevTools();
+    })
+    .catch(err => {
+      console.log("An error occured", err);
+    });
 }
 
 try {

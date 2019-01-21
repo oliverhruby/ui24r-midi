@@ -68,6 +68,7 @@ import { reducer as watcherReducer } from "./reducers/watcher.reducer";
 import { ConnectionEffects } from "./effects/connection.effects";
 import { ControllerEffects } from "./effects/controller.effects";
 import { WebsocketService } from "./services/websocket.service";
+import { DeviceEffects } from "./effects/device.effects";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -105,7 +106,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       maxAge: 25, // Retains last 25 states
       logOnly: AppConfig.production // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([ConnectionEffects, ControllerEffects]),
+    EffectsModule.forRoot([
+      ConnectionEffects,
+      ControllerEffects,
+      DeviceEffects
+    ]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
