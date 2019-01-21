@@ -27,26 +27,18 @@ export class SettingsComponent implements OnInit {
   constructor(
     private midi: MidiService,
     private store: Store<AppState>,
-    private http: HttpClient) {
-    this.profileState$ = this.store.select("profiles");
-    this.profiles$ = this.profileState$.pipe(select(ProfileReducer.selectAll));
+    private http: HttpClient
+  ) {}
+
+  ngOnInit() {
+    this.http.get("./assets/profiles.json").subscribe(data => {
+      this.store.dispatch(new ProfileActions.LoadProfiles(data));
+      this.profileState$ = this.store.select("profiles");
+      this.profiles$ = this.profileState$.pipe(select(ProfileReducer.selectAll));
+    });
     this.inputDevices$ = this.store.select("devices");
     this.store.select("connection").subscribe(x => (this.connection = x));
-
-    this.getProfiles();
   }
-
-  getProfiles() {
-    this.http.get("./assets/profiles.json")
-      .subscribe(data => {
-        this.store.dispatch(new ProfileActions.LoadProfiles(data));
-        // TODO: fix this hack
-        this.profileState$ = this.store.select("profiles");
-        this.profiles$ = this.profileState$.pipe(select(ProfileReducer.selectAll));
-      });
-  }
-
-  ngOnInit() {}
 
   onChange(e) {
     this.store.dispatch(new ProfileActions.SelectProfile(e.selectedProfile));
