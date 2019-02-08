@@ -68,7 +68,7 @@
   "devDependencies": {
     "@types/jasmine": "^3.3.5",
     "@types/jasminewd2": "^2.0.6",
-    "@types/node": "^10.12.18",
+    "@types/node": "^10.12.22",
     "@types/webmidi": "^2.0.2",
     "codelyzer": "^4.5.0",
     "core-js": "^2.6.1",
