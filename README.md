@@ -4,7 +4,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/oliverhruby/ui24r-midi/badge.svg?branch=master)](https://coveralls.io/github/oliverhruby/ui24r-midi?branch=master)
 [![codebeat badge](https://codebeat.co/badges/ffc107ee-93e0-4db5-82e1-2f492835c725)](https://codebeat.co/projects/github-com-oliverhruby-ui24r-midi-master)
 [![Dependencies](https://david-dm.org/oliverhruby/ui24r-midi/status.svg)](https://david-dm.org/oliverhruby/ui24r-midi)
-[![Greenkeeper badge](https://badges.greenkeeper.io/oliverhruby/ui24r-midi.svg)](https://greenkeeper.io/)
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=oliverhruby_ui24r-midi&metric=alert_status)](https://sonarcloud.io/dashboard?id=oliverhruby_ui24r-midi)
 
 The aim of this project is to create a MIDI controller for [Soundcraft Ui24R](https://www.soundcraft.com/en/products/ui24r) mixing console. It doesn't currently support MIDI control. The controller would connect the MIDI device (control surface) to the Ui24R console and translate the MIDI commands to the native commands or the opposite way, based on configurable
